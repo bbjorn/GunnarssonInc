@@ -1,0 +1,134 @@
+:root {
+  --clr-bg1: hsl(253, 83%, 12%);
+  --clr-bg2: hsl(230, 78%, 46%);
+  --clr-text1: hsl(313, 100%, 50%);
+  --clr-text2: hsl(307, 100%, 58%);
+  --clr-accent: hsl(42, 100%, 50%);
+  color-scheme: dark;
+
+  --px: 2rem;
+  --py: 2rem;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: monospace;
+  background-color: var(--clr-bg1);
+}
+
+body {
+  margin: 0;
+  padding: var(--px) var(--py);
+}
+
+body::before,
+body::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+}
+
+body::before {
+  --size: 4px;
+  z-index: 1;
+  background-image: linear-gradient(
+    hsl(from var(--clr-text1) H S L / 0.6) 0 1px,
+    transparent 0
+  );
+  background-size: 1px var(--size);
+  inset: calc(var(--size) * -1);
+  animation: scroll infinite 2000ms linear;
+  filter: blur(0.5px);
+  pointer-events: none;
+}
+
+@keyframes scroll {
+  from {
+    translate: 0 calc(-1 * var(--size) / 2);
+  }
+  to {
+    translate: 0 calc(var(--size) / 2);
+  }
+}
+
+body::after {
+  z-index: 1;
+  background: radial-gradient(
+    hsl(from var(--clr-bg1) h s l / 0.05),
+    hsl(from var(--clr-bg2) h s l / 0.025)
+  );
+
+  border-radius: 15dvmax;
+  corner-shape: squircle;
+  outline: 20dvmax var(--clr-bg1) solid;
+
+  inset: var(--px) var(--py);
+
+  filter: blur(2rem);
+}
+
+.terminal {
+  background: linear-gradient(0deg, var(--clr-text1), var(--clr-accent));
+  background-size: 1px 100dvh;
+  background-position: bottom;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  padding: calc(2 * var(--px)) calc(2 * var(--py));
+  margin: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: scroll;
+
+  & input {
+    border: none;
+    background-color: transparent;
+    font-family: monospace;
+    caret-shape: underscore;
+    caret-color: var(--clr-text1);
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.inputLine {
+  display: flex;
+  gap: 1ch;
+  &:has(input:placeholder-shown:focus)::before {
+    content: "";
+    animation: blink 1s steps(1) infinite;
+    background-color: var(--clr-text1);
+
+    position: absolute;
+
+    translate: 2.25ch 1.125rem;
+
+    height: 0.125rem;
+    width: 1ch;
+  }
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
