@@ -7,7 +7,6 @@ export const InputLine = ({ write }: { write: (newLine: string) => void }) => {
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      console.log(inputRef?.current?.value, event.key);
       event.preventDefault();
 
       if (inputRef?.current?.value) {

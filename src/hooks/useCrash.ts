@@ -7,11 +7,19 @@ export const useCrash = (write: (newLine: string) => void, rowDelay = 600) => {
     setHasCrashed(true);
 
     function writeCrashMsg(msgList: string[]) {
+      const msg = msgList.at(0) ?? "";
       write(msgList.at(0) ?? "");
-      setTimeout(() => writeCrashMsg(msgList.splice(1)), rowDelay);
+
+      if (msgList.length > 0) {
+        setTimeout(() => writeCrashMsg(msgList.splice(1)), rowDelay);
+      }
+
+      if (msg === crashMessages.at(-1)) {
+        document.querySelector("#fadeToBlack")?.classList.add("play");
+      }
     }
 
-    writeCrashMsg(crashMessages);
+    writeCrashMsg([...crashMessages]);
   };
 
   return { hasCrashed, crash };

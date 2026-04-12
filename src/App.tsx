@@ -5,13 +5,16 @@ import { useBootup } from "./hooks/useBootup";
 function App() {
   const { terminalText, terminalLoaded, writeNewLine } = useBootup(1000);
   return (
-    <div className="terminal">
-      <pre>{mjolnir}</pre>
-      {terminalText.map((line) => (
-        <p>{line}</p>
-      ))}
-      {terminalLoaded ? <InputLine write={writeNewLine} /> : null}
-    </div>
+    <>
+      <div className="terminal">
+        <pre>{mjolnir}</pre>
+        {terminalText.map((line) => (
+          <p>{line}</p>
+        ))}
+        {terminalLoaded ? <InputLine write={writeNewLine} /> : null}
+      </div>
+      <div className="fadeToBlack" id="fadeToBlack"></div>
+    </>
   );
 }
 

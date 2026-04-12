@@ -25,7 +25,7 @@
 
 html,
 body {
-  font-family: monospace;
+  font-family: "Fira Mono", monospace;
   background-color: var(--clr-bg1);
 }
 
@@ -99,7 +99,7 @@ body::after {
   & input {
     border: none;
     background-color: transparent;
-    font-family: monospace;
+    font-family: inherit;
     caret-shape: underscore;
     caret-color: var(--clr-text1);
     width: 100%;
@@ -137,5 +137,101 @@ body::after {
   51%,
   100% {
     opacity: 0;
+  }
+}
+
+.fadeToBlack {
+  --animation-time: 2000ms;
+  position: fixed;
+  z-index: 3;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: transparent;
+  pointer-events: none;
+  animation: blackscreen var(--animation-time) forwards;
+
+  &::before,
+  &::after {
+    content: "";
+    position: fixed;
+    pointer-events: none;
+  }
+
+  &::before {
+    height: 100lvh;
+    height: 1rem;
+    height: 1px;
+
+    inset-inline: -2rem;
+    background-color: white;
+    box-shadow: 0 0 1rem 1rem white;
+    animation: whiteline var(--animation-time) forwards;
+  }
+
+  &::after {
+    height: 20dvmax;
+    width: 15dvmax;
+    background-color: white;
+    border-radius: 50%;
+    filter: blur(2.5dvmax);
+    animation: whitedot var(--animation-time) forwards;
+  }
+
+  animation-play-state: paused;
+
+  &::before,
+  &::after {
+    animation-play-state: paused;
+  }
+}
+
+.play,
+.play::before,
+.play::after {
+  animation-play-state: running;
+}
+
+@keyframes blackscreen {
+  0% {
+    background-color: transparent;
+  }
+  25%,
+  100% {
+    background-color: #111;
+  }
+}
+
+@keyframes whiteline {
+  0% {
+    opacity: 0;
+  }
+  1%,
+  5% {
+    height: 100lvh;
+    opacity: 1;
+    scale: 1 1;
+  }
+  50% {
+    height: 1px;
+    opacity: 1;
+    scale: 1 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1 0;
+  }
+}
+
+@keyframes whitedot {
+  0%,
+  50% {
+    scale: 0;
+  }
+  75% {
+    scale: 1;
+  }
+  100% {
+    scale: 0;
   }
 }
