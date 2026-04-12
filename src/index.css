@@ -10,6 +10,13 @@
   --py: 2rem;
 }
 
+@media screen and (width < 600px) {
+  :root {
+    --px: 0.5rem;
+    --py: 1rem;
+  }
+}
+
 *,
 *::after,
 *::before {
