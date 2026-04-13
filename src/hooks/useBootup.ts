@@ -1,21 +1,46 @@
 import { useEffect, useState } from "react";
+import type { TTerminalLine } from "../utils/types";
 
 export const bootSequence: string[][] = [
-  ["GUNNARSSON INC. [Ver. 2064.03.13]"],
+  ["GUNNARSSON INC. SECURE OS [Ver. 2064.03.13]"],
   ["(C) 2064 Gunnarsson Incorporated. All rights reserved."],
   [""],
   [
-    "C:\\CYBERNET> _",
-    "C:\\CYBERNET> c",
-    "C:\\CYBERNET> co",
-    "C:\\CYBERNET> corp",
-    "C:\\CYBERNET> corpnet",
-    "C:\\CYBERNET> corpnet.",
-    "C:\\CYBERNET> corpnet.e",
-    "C:\\CYBERNET> corpnet.ex",
-    "C:\\CYBERNET> corpnet.exe",
+    "Memory test:      0 MB",
+    "Memory test:    256 MB",
+    "Memory test:    512 MB",
+    "Memory test:    768 MB",
+    "Memory test:   1024 MB",
+    "Memory test:   1536 MB",
+    "Memory test:   2048 MB [PASS]",
   ],
-  ["// CORPORATE ACCESS TERMINAL //"],
+  [""],
+  ["Detecting system hardware..."],
+  ["  > Neural I/O Bridge v4............. [OK]"],
+  ["  > ICE Coprocessor MkVII............ [OK]"],
+  ["  > Quantum Entropy Module........... [OK]"],
+  ["  > Corp Uplink Interface............ [OK]"],
+  [""],
+  ["> Loading MATRIX kernel..."],
+  [
+    "  [____________________] 0%",
+    "  [████________________] 20%",
+    "  [████████____________] 40%",
+    "  [████████████________] 60%",
+    "  [████████████████____] 80%",
+    "  [████████████████████] 100%",
+  ],
+  [""],
+  ["Starting security services..."],
+  [
+    "> Activating ICE security protocols... [...]",
+    "> Activating ICE security protocols... [A...]",
+    "> Activating ICE security protocols... [AC...]",
+    "> Activating ICE security protocols... [ACT...]",
+    "> Activating ICE security protocols... [ACTI...]",
+    "> Activating ICE security protocols... [ACTIV...]",
+    "> Activating ICE security protocols... [ACTIVE]",
+  ],
   ["Initializing secure Matrix uplink..."],
   [
     "> Connecting to Zurich Orbital Grid... [·..]",
@@ -40,15 +65,8 @@ export const bootSequence: string[][] = [
     "> Verifying executive credentials... [AUTHORIZE...]",
     "> Verifying executive credentials... [AUTHORIZED]",
   ],
-  [
-    "> Activating ICE security protocols... [...]",
-    "> Activating ICE security protocols... [A...]",
-    "> Activating ICE security protocols... [AC...]",
-    "> Activating ICE security protocols... [ACT...]",
-    "> Activating ICE security protocols... [ACTI...]",
-    "> Activating ICE security protocols... [ACTIV...]",
-    "> Activating ICE security protocols... [ACTIVE]",
-  ],
+  [""],
+  ["// CORPORATE ACCESS TERMINAL //"],
   ["> Loading corporate dashboard modules..."],
   [
     "  [________________________________________] 0%",
@@ -98,17 +116,16 @@ export const bootSequence: string[][] = [
   ["> Quarterly earnings report available."],
   ["> All employees must update their biometrics by 2064-04-04."],
   ["> Remember: Data is the lifeblood of progress."],
-  ["Type 'help' for a list of available commands."],
 ];
 
 export const useBootup = (
-  startDelay = 0,
-  writeLineDelay = 600,
-  typingSpeed = 120,
+  startDelay: number,
+  writeLineDelay: number,
+  typingSpeed: number,
 ) => {
-  const [terminalText, setTerminalText] = useState<string[]>([]);
+  const [terminalText, setTerminalText] = useState<TTerminalLine[]>([]);
 
-  function writeNewLine(newLine: string) {
+  function writeNewLine(newLine: TTerminalLine) {
     setTerminalText((prev) => [...prev, newLine]);
   }
 

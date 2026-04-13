@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { WRITE_LINE_DELAY } from "../utils/constants";
 
-export const useCrash = (write: (newLine: string) => void, rowDelay = 600) => {
+export const useCrash = (write: (newLine: string) => void) => {
   const [hasCrashed, setHasCrashed] = useState(false);
 
   const crash = () => {
@@ -11,7 +12,7 @@ export const useCrash = (write: (newLine: string) => void, rowDelay = 600) => {
       write(msgList.at(0) ?? "");
 
       if (msgList.length > 0) {
-        setTimeout(() => writeCrashMsg(msgList.splice(1)), rowDelay);
+        setTimeout(() => writeCrashMsg(msgList.splice(1)), WRITE_LINE_DELAY);
       }
 
       if (msg === crashMessages.at(-1)) {
