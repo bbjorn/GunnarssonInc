@@ -19,6 +19,18 @@ export const InputLine = ({
     [inputText, ...(reports.at(reportIdx)?.report ?? [])].forEach((line, idx) =>
       setTimeout(() => write(line), idx * WRITE_LINE_DELAY),
     );
+    setTimeout(
+      () =>
+        write(
+          <>
+            To list all available reports type{" "}
+            <button className="inlineBtn" onClick={() => doListReports()}>
+              'list reports'
+            </button>
+          </>,
+        ),
+      ((reports.at(reportIdx)?.report ?? []).length + 1) * WRITE_LINE_DELAY,
+    );
   };
 
   const doListReports = (inputText: string = "> list reports") => {
@@ -41,6 +53,18 @@ export const InputLine = ({
         offsetIdx * WRITE_LINE_DELAY,
       );
     });
+    setTimeout(
+      () =>
+        write(
+          <>
+            For more commands type{" "}
+            <button className="inlineBtn" onClick={() => doHelpCommand()}>
+              'help'{" "}
+            </button>
+          </>,
+        ),
+      reports.length * WRITE_LINE_DELAY,
+    );
   };
 
   const doHelpCommand = (inputText: string = "> help") => {
@@ -49,12 +73,12 @@ export const InputLine = ({
       "GUNNARSSON INC. SECURE OS [Ver. 2064.03.13]",
       "",
       "These are common commands used in various situations:",
-      <p>
+      <>
         <button className="inlineBtn" onClick={() => doListReports()}>
           list reports
         </button>{" "}
         - Lists all available reports
-      </p>,
+      </>,
       "open report # or [name] - opens corresonding report",
     ];
 

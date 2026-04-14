@@ -71,7 +71,7 @@ body::after {
     hsl(from var(--clr-bg2) h s l / 0.025)
   );
 
-  border-radius: 15dvmax;
+  border-radius: min(var(--px), var(--py), 15dvmax);
   corner-shape: squircle;
   outline: 20dvmax var(--clr-bg1) solid;
 
@@ -85,7 +85,7 @@ body::after {
   background-size: 1px 100dvh;
   background-position: bottom;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* -webkit-text-fill-color: transparent; */
   background-clip: text;
   color: transparent;
   padding: calc(2 * var(--px)) calc(2 * var(--py));
