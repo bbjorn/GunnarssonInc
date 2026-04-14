@@ -80,6 +80,17 @@ body::after {
   filter: blur(2rem);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1rem;
+  margin-block: 1rem;
+  font-weight: 400;
+}
+
 .terminal {
   background: linear-gradient(0deg, var(--clr-text1), var(--clr-accent));
   background-size: 1px 100dvh;
@@ -255,4 +266,53 @@ body::after {
 
 pre {
   margin: 0;
+}
+
+.program {
+  inset: 0;
+
+  height: calc(100dvh - var(--py) * 4);
+  display: grid;
+  border: white 4px double;
+  padding: 1rem;
+  align-content: space-between;
+
+  & > header,
+  & > footer {
+    display: flex;
+    justify-content: space-between;
+
+    & > p {
+      margin: 0;
+
+      &:last-child {
+        text-align: end;
+      }
+    }
+  }
+
+  & > main {
+    justify-self: center;
+  }
+
+  & h1 {
+    text-align: center;
+    text-wrap: pretty;
+  }
+}
+
+.vala > main {
+  & > .inlineBtn {
+    margin-inline: auto;
+    width: 100%;
+    text-wrap: pretty;
+  }
+
+  li {
+    margin-block: 1rem;
+  }
+}
+
+.vala-output {
+  max-width: 60ch;
 }

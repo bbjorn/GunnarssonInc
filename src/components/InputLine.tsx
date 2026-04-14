@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import type { TProgram } from "../App";
 import { reports } from "../assets/reports";
 import { useCrash } from "../hooks/useCrash";
 import { TYPING_SPEED, WRITE_LINE_DELAY } from "../utils/constants";
@@ -6,8 +7,10 @@ import type { TTerminalLine } from "../utils/types";
 
 export const InputLine = ({
   write,
+  onRunProgram,
 }: {
   write: (newLine: TTerminalLine) => void;
+  onRunProgram: React.Dispatch<React.SetStateAction<TProgram | null>>;
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const loadedRef = useRef(false);
@@ -111,6 +114,15 @@ export const InputLine = ({
         - Lists all available reports
       </>,
       "open report # or [name] - opens corresonding report",
+      <>
+        <button
+          className="inlineBtn"
+          onClick={() => writeToCommandLine("run vala.exe")}
+        >
+          run vala.exe
+        </button>{" "}
+        - Launches the VALA.EXE prediction program
+      </>,
     ];
 
     helpCommands.forEach((cmd, idx) =>
@@ -178,6 +190,11 @@ export const InputLine = ({
       }
 
       switch (command) {
+        case "run vala.exe":
+          write(newLine);
+          setTimeout(() => onRunProgram("vala"), WRITE_LINE_DELAY);
+          break;
+
         case "help":
           doHelpCommand(newLine);
           break;
