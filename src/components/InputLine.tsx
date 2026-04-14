@@ -1,8 +1,8 @@
-import React, { useEffect, useEffectEvent, useRef } from "react";
-import { useCrash } from "../hooks/useCrash";
-import { WRITE_LINE_DELAY } from "../utils/constants";
-import type { TTerminalLine } from "../utils/types";
+import React, { useEffect, useRef } from "react";
 import { reports } from "../assets/reports";
+import { useCrash } from "../hooks/useCrash";
+import { TYPING_SPEED, WRITE_LINE_DELAY } from "../utils/constants";
+import type { TTerminalLine } from "../utils/types";
 
 export const InputLine = ({
   write,
@@ -15,6 +15,28 @@ export const InputLine = ({
   const historyRef = useRef<string[]>([""]);
   const historyIndexRef = useRef<number>(0);
 
+  function writeToCommandLine(command: string) {
+    if (!inputRef.current) return;
+    inputRef.current.value = "";
+
+    for (let i = 0; i < command.length; i++) {
+      setTimeout(() => {
+        if (!inputRef.current) return;
+        inputRef.current.value = (inputRef.current.value ?? "") + command[i];
+      }, i * TYPING_SPEED);
+    }
+
+    setTimeout(() => {
+      if (inputRef.current) {
+        const event = new KeyboardEvent("keydown", {
+          key: "Enter",
+          bubbles: true,
+        });
+        inputRef.current.dispatchEvent(event);
+      }
+    }, command.length * TYPING_SPEED);
+  }
+
   const openReport = (inputText: string, reportIdx: number) => {
     [inputText, ...(reports.at(reportIdx)?.report ?? [])].forEach((line, idx) =>
       setTimeout(() => write(line), idx * WRITE_LINE_DELAY),
@@ -24,7 +46,10 @@ export const InputLine = ({
         write(
           <>
             To list all available reports type{" "}
-            <button className="inlineBtn" onClick={() => doListReports()}>
+            <button
+              className="inlineBtn"
+              onClick={() => writeToCommandLine("list reports")}
+            >
               'list reports'
             </button>
           </>,
@@ -44,7 +69,7 @@ export const InputLine = ({
               {offsetIdx + ". "}
               <button
                 className="inlineBtn"
-                onClick={() => openReport("> open report " + report.name, idx)}
+                onClick={() => writeToCommandLine("open report " + report.name)}
               >
                 {report.name}
               </button>
@@ -58,7 +83,10 @@ export const InputLine = ({
         write(
           <>
             For more commands type{" "}
-            <button className="inlineBtn" onClick={() => doHelpCommand()}>
+            <button
+              className="inlineBtn"
+              onClick={() => writeToCommandLine("help")}
+            >
               'help'{" "}
             </button>
           </>,
@@ -74,7 +102,10 @@ export const InputLine = ({
       "",
       "These are common commands used in various situations:",
       <>
-        <button className="inlineBtn" onClick={() => doListReports()}>
+        <button
+          className="inlineBtn"
+          onClick={() => writeToCommandLine("list reports")}
+        >
           list reports
         </button>{" "}
         - Lists all available reports
@@ -164,15 +195,16 @@ export const InputLine = ({
     }
   };
 
-  const doHelpCommandEvent = useEffectEvent(() => doHelpCommand());
-
   useEffect(() => {
     if (!loadedRef.current) {
       loadedRef.current = true;
       write(
         <p>
           Type{" "}
-          <button className="inlineBtn" onClick={() => doHelpCommandEvent()}>
+          <button
+            className="inlineBtn"
+            onClick={() => writeToCommandLine("help")}
+          >
             'help'
           </button>{" "}
           for a list of available commands.
