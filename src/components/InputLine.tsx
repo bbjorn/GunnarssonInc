@@ -32,7 +32,7 @@ export const InputLine = ({
               {offsetIdx + ". "}
               <button
                 className="inlineBtn"
-                onClick={() => openReport("> " + report.name, idx)}
+                onClick={() => openReport("> open report " + report.name, idx)}
               >
                 {report.name}
               </button>
