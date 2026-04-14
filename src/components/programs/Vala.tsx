@@ -1,4 +1,3 @@
-// Data for each model: predictions, likelihoods, messages
 const MODEL_DATA: Record<
   string,
   {
@@ -307,9 +306,7 @@ const MODEL_DATA: Record<
   },
 };
 
-// Skeleton for VALA.EXE prediction program
-// All logic and UI for the prediction engine will go here.
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { TYPING_SPEED } from "../../utils/constants";
 
 const MODELS = [
