@@ -3,6 +3,7 @@ const MODEL_DATA: Record<
   {
     predictions: string[];
     likelihoods: number[];
+    likelihoodTexts: string[];
     messages: string[];
   }
 > = {
@@ -31,6 +32,18 @@ const MODEL_DATA: Record<
     ],
     likelihoods: [
       7, 14, 22, 3, 18, 27, 11, 9, 31, 5, 13, 17, 21, 8, 19, 25, 16, 12, 23, 6,
+    ],
+    likelihoodTexts: [
+      "has a likelihood of {x}% of happening.",
+      "shows a {x}% probability of occurrence.",
+      "risk increased by {x}% compared to last cycle.",
+      "projected chance: {x}%.",
+      "likelihood up {x}% from baseline.",
+      "decreased likelihood: {x}% drop since last report.",
+      "statistical risk: {x}%.",
+      "odds of event: {x}%.",
+      "variance: {x}% from expected.",
+      "confidence interval: {x}%.",
     ],
     messages: [
       "Activate Odin Protocols immediately.",
@@ -82,6 +95,18 @@ const MODEL_DATA: Record<
       12, 33, 68, 21, 44, 55, 17, 29, 38, 60, 41, 36, 53, 47, 28, 62, 49, 34,
       57, 25,
     ],
+    likelihoodTexts: [
+      "has a likelihood of {x}% of happening.",
+      "volatility index at {x}%.",
+      "risk increased by {x}% over previous period.",
+      "market swing probability: {x}%.",
+      "deviation from norm: {x}%.",
+      "fluctuation chance: {x}%.",
+      "variance: {x}% from baseline.",
+      "instability up {x}% since last report.",
+      "likelihood decreased by {x}%.",
+      "statistical volatility: {x}%.",
+    ],
     messages: [
       "Activate 'Berserk Mode' for asset defense.",
       "No action required at this time.",
@@ -132,6 +157,18 @@ const MODEL_DATA: Record<
       2.1, 0.7, 5.4, 1.3, 4.2, 3.7, 0.9, 2.8, 1.6, 6.6, 3.2, 2.4, 4.7, 1.8, 2.9,
       3.5, 1.2, 2.6, 3.9, 5.1,
     ],
+    likelihoodTexts: [
+      "has a likelihood of {x}% of breach.",
+      "breach probability: {x}%.",
+      "risk increased by {x}% since last scan.",
+      "threat level: {x}%.",
+      "variance: {x}% from baseline.",
+      "likelihood up {x}% from last report.",
+      "decreased breach risk: {x}% drop.",
+      "statistical threat: {x}%.",
+      "odds of breach: {x}%.",
+      "confidence interval: {x}%.",
+    ],
     messages: [
       "Increase monitoring of external connections immediately.",
       "Continue standard protocols and remain vigilant.",
@@ -180,6 +217,18 @@ const MODEL_DATA: Record<
     ],
     likelihoods: [
       3, 12, 27, 8, 15, 21, 6, 18, 24, 9, 11, 14, 22, 17, 13, 19, 16, 20, 23, 7,
+    ],
+    likelihoodTexts: [
+      "has a likelihood of {x}% of disruption.",
+      "disruption risk: {x}%.",
+      "variance: {x}% from expected.",
+      "likelihood up {x}% from baseline.",
+      "risk increased by {x}% since last cycle.",
+      "supply chain stability: {x}%.",
+      "decreased risk: {x}% drop.",
+      "projected chance: {x}%.",
+      "statistical risk: {x}%.",
+      "confidence interval: {x}%.",
     ],
     messages: [
       "Schedule the next audit for 2064-05-01.",
@@ -231,6 +280,18 @@ const MODEL_DATA: Record<
       93, 88, 97, 85, 91, 89, 95, 87, 92, 90, 86, 94, 96, 84, 83, 98, 88, 93,
       91, 89,
     ],
+    likelihoodTexts: [
+      "has a likelihood of {x}% for high loyalty.",
+      "loyalty index at {x}%.",
+      "variance: {x}% from baseline.",
+      "likelihood up {x}% from last survey.",
+      "risk of attrition: {x}%.",
+      "confidence interval: {x}%.",
+      "statistical loyalty: {x}%.",
+      "decreased attrition risk: {x}% drop.",
+      "projected loyalty: {x}%.",
+      "survey confidence: {x}%.",
+    ],
     messages: [
       "Offer a bonus to key staff to boost loyalty.",
       "Monitor flagged employees for further issues.",
@@ -280,6 +341,18 @@ const MODEL_DATA: Record<
     likelihoods: [
       99.98, 99.92, 99.87, 99.73, 99.81, 99.65, 99.9, 99.77, 99.84, 99.69,
       99.79, 99.68, 99.83, 99.74, 99.89, 99.91, 99.78, 99.86, 99.82, 99.88,
+    ],
+    likelihoodTexts: [
+      "has a likelihood of {x}% for stable uplink.",
+      "uplink stability at {x}%.",
+      "variance: {x}% from baseline.",
+      "likelihood up {x}% from last check.",
+      "risk of disruption: {x}%.",
+      "confidence interval: {x}%.",
+      "statistical stability: {x}%.",
+      "decreased risk: {x}% drop.",
+      "projected stability: {x}%.",
+      "signal confidence: {x}%.",
     ],
     messages: [
       "No action required at this time.",
@@ -342,7 +415,7 @@ export default function Vala({ onExit }: { onExit: () => void }) {
   const [loaded, setLoaded] = useState(0);
   const [modelResult, setModelResult] = useState<null | {
     prediction: string;
-    likelihood: number;
+    likelihoodText: string;
     message: string;
   }>(null);
 
@@ -378,12 +451,20 @@ export default function Vala({ onExit }: { onExit: () => void }) {
         ),
       ) ?? 0;
 
+    const likelihoodText = (
+      MODEL_DATA[selectedModel].likelihoodTexts.at(
+        Math.floor(
+          Math.random() * MODEL_DATA[selectedModel].likelihoodTexts.length,
+        ),
+      ) ?? ""
+    ).replace("{x}", likelihood.toString());
+
     const message =
       MODEL_DATA[selectedModel].messages.at(
         Math.floor(Math.random() * MODEL_DATA[selectedModel].messages.length),
       ) ?? "";
 
-    setTimeout(() => setModelResult({ prediction, likelihood, message }));
+    setTimeout(() => setModelResult({ prediction, likelihoodText, message }));
   }, [selectedModel]);
 
   // Render a loading bar with 20 segments
@@ -394,7 +475,7 @@ export default function Vala({ onExit }: { onExit: () => void }) {
 
   const loadingScreen = (
     <main>
-      <p>Loading:</p>
+      <p>{selectedModel ? "Analyzing..." : "Loading:"}</p>
       <pre>{bar}</pre>
       <p>{loaded}%</p>
     </main>
@@ -433,8 +514,7 @@ export default function Vala({ onExit }: { onExit: () => void }) {
       {modelResult && (
         <>
           <p className="vala-output">
-            {modelResult.prediction}, has a likelihood of{" "}
-            {modelResult.likelihood}% of happening. <br />
+            {modelResult.prediction} {modelResult.likelihoodText} <br />
             <br />
             {modelResult.message}
           </p>
