@@ -380,7 +380,7 @@ const MODEL_DATA: Record<
 };
 
 import { useEffect, useState } from "react";
-import { TYPING_SPEED } from "../../utils/constants";
+import { useLoadingScreen } from "../../hooks/useLoadingScreen";
 
 const MODELS = [
   {
@@ -411,28 +411,12 @@ const MODELS = [
 
 export default function Vala({ onExit }: { onExit: () => void }) {
   const [selectedModel, setSelectedModel] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [loaded, setLoaded] = useState(0);
+  const { loadingScreen, loading, setLoading } = useLoadingScreen(selectedModel ?  "Analyzing..." : "Loading:");
   const [modelResult, setModelResult] = useState<null | {
     prediction: string;
     likelihoodText: string;
     message: string;
   }>(null);
-
-  useEffect(() => {
-    if (loading) setTimeout(() => setLoaded(0), 0);
-  }, [loading]);
-
-  useEffect(() => {
-    if (loaded >= 100) {
-      setTimeout(() => setLoading(false));
-      return;
-    }
-
-    setTimeout(() => {
-      setLoaded((prev) => Math.min(prev + Math.ceil(Math.random() * 10), 100));
-    }, TYPING_SPEED);
-  }, [loaded]);
 
   useEffect(() => {
     if (!selectedModel) return;
@@ -466,20 +450,6 @@ export default function Vala({ onExit }: { onExit: () => void }) {
 
     setTimeout(() => setModelResult({ prediction, likelihoodText, message }));
   }, [selectedModel]);
-
-  // Render a loading bar with 20 segments
-  const totalSegments = 20;
-  const filledSegments = Math.round((loaded / 100) * totalSegments);
-  const bar =
-    "█".repeat(filledSegments) + "_".repeat(totalSegments - filledSegments);
-
-  const loadingScreen = (
-    <main>
-      <p>{selectedModel ? "Analyzing..." : "Loading:"}</p>
-      <pre>{bar}</pre>
-      <p>{loaded}%</p>
-    </main>
-  );
 
   const mainMenu = (
     <main>
