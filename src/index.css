@@ -127,7 +127,10 @@ h6 {
 .inputLine {
   display: flex;
   gap: 1ch;
-  &:has(input:placeholder-shown:focus)::before {
+}
+
+@supports ( caret-shape: underscore){
+  .inputLine:has(input:placeholder-shown:focus)::before {
     content: "";
     animation: blink 1s steps(1) infinite;
     background-color: var(--clr-text1);
@@ -315,4 +318,19 @@ pre {
 
 .vala-output {
   max-width: 60ch;
+}
+
+.asciiImg{
+  position: relative;
+  left: 50%;
+  translate: -50% 0;
+  width: fit-content;
+}
+
+.incident_buttons{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px 1ch;
+  margin-top: auto;
+  justify-content: center;
 }

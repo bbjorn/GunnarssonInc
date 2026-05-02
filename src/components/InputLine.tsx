@@ -114,7 +114,7 @@ export const InputLine = ({
         - Lists all available reports
       </>,
       "open report # or [name] - opens corresonding report",
-      <>
+      <p>
         <button
           className="inlineBtn"
           onClick={() => writeToCommandLine("run vala.exe")}
@@ -122,7 +122,16 @@ export const InputLine = ({
           run vala.exe
         </button>{" "}
         - Launches the VALA.EXE prediction program
-      </>,
+      </p>,
+      <p>
+        <button
+          className="inlineBtn"
+          onClick={() => writeToCommandLine("run teamtracker.exe")}
+        >
+          run teamtracker.exe
+        </button>{" "}
+        - Launches the TEAMTRACKER.EXE: Because teamwork is mandatory, and trust is a liability.<br />
+      </p>
     ];
 
     helpCommands.forEach((cmd, idx) =>
@@ -193,6 +202,11 @@ export const InputLine = ({
         case "run vala.exe":
           write(newLine);
           setTimeout(() => onRunProgram("vala"), WRITE_LINE_DELAY);
+          break;
+
+        case "run teamtracker.exe":
+          write(newLine);
+          setTimeout(() => onRunProgram("teamtracker"), WRITE_LINE_DELAY);
           break;
 
         case "help":
