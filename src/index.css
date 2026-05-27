@@ -129,7 +129,7 @@ h6 {
   gap: 1ch;
 }
 
-@supports ( caret-shape: underscore){
+@supports (caret-shape: underscore) {
   .inputLine:has(input:placeholder-shown:focus)::before {
     content: "";
     animation: blink 1s steps(1) infinite;
@@ -320,17 +320,95 @@ pre {
   max-width: 60ch;
 }
 
-.asciiImg{
+.asciiImg {
   position: relative;
   left: 50%;
   translate: -50% 0;
   width: fit-content;
 }
 
-.incident_buttons{
+.incident_buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 1px 1ch;
   margin-top: auto;
   justify-content: center;
+}
+
+.message-body {
+  display: grid;
+  gap: 1rem;
+  height: 100%;
+  overflow: hidden;
+  padding-block-end: 1rem;
+}
+
+.message-content {
+  overflow: auto;
+  height: 100%;
+  min-height: 0;
+  isolation: isolate;
+  color: var(--clr-text1);
+  padding-inline: 1rem;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid white;
+}
+
+@media screen and (width > 1000px) {
+  .messaging-app {
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+  }
+
+  .message-body {
+    grid-template-columns: auto 1fr;
+    justify-self: start;
+    width: 100%;
+  }
+
+  .message-content {
+    border-block-start: none;
+    border-inline-start: 1px solid white;
+  }
+
+  .message-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    & li {
+      padding-block: 0.125rem;
+    }
+  }
+}
+
+.messageExitBtn {
+  margin-block-start: auto;
+  width: 100%;
+}
+
+@media screen and (width <= 1000px) {
+  .message-body,
+  .messaging-app {
+    display: flex;
+    flex-direction: column;
+  }
+  .message-body {
+    margin-bottom: auto;
+  }
+
+  .message-list > ol button {
+    text-align: start;
+  }
+
+  .message-content {
+    flex-grow: 1;
+  }
+}
+
+.msg-placeholder {
+  height: 100%;
+  display: grid;
+  place-content: center;
 }

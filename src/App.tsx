@@ -10,11 +10,14 @@ import {
 } from "./utils/constants";
 import Vala from "./components/programs/Vala";
 import TeamTracker from "./components/programs/TeamTracker";
+import MessagingApp from "./components/programs/MessagingApp";
 
-const isLocalhost = window.location.hostname === "localhost" ||
-  window.location.hostname === "127.0.0.1" || window.location.hostname === "192.168.0.171";
+const isLocalhost =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1" ||
+  window.location.hostname === "192.168.0.171";
 
-export type TProgram = "vala" | "teamtracker"
+export type TProgram = "vala" | "teamtracker" | "messagingapp";
 
 function App() {
   const { terminalText, terminalLoaded, writeNewLine } = useBootup(
@@ -28,16 +31,20 @@ function App() {
     return <Vala onExit={() => setActiveProgram(null)} />;
   }
 
-  if(activeProgram === "teamtracker") {
+  if (activeProgram === "teamtracker") {
     return <TeamTracker onExit={() => setActiveProgram(null)} />;
+  }
+
+  if (activeProgram === "messagingapp") {
+    return <MessagingApp onExit={() => setActiveProgram(null)} />;
   }
 
   return (
     <>
       <div className="terminal">
-      <div className="asciiImg">
-        <pre>{mjolnir}</pre>
-      </div>
+        <div className="asciiImg">
+          <pre>{mjolnir}</pre>
+        </div>
         {terminalText.map((line) =>
           typeof line === "string" ? (
             <p>{line === "" ? <br /> : line}</p>

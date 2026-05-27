@@ -130,8 +130,20 @@ export const InputLine = ({
         >
           run teamtracker.exe
         </button>{" "}
-        - Launches the TEAMTRACKER.EXE: Because teamwork is mandatory, and trust is a liability.<br />
-      </p>
+        - Launches the TEAMTRACKER.EXE: Because teamwork is mandatory, and trust
+        is a liability.
+        <br />
+      </p>,
+      <p>
+        <button
+          className="inlineBtn"
+          onClick={() => writeToCommandLine("run messages.exe")}
+        >
+          run messages.exe
+        </button>{" "}
+        - Launches the Message Center: Read your electronic messages.
+        <br />
+      </p>,
     ];
 
     helpCommands.forEach((cmd, idx) =>
@@ -215,6 +227,11 @@ export const InputLine = ({
 
         case "list reports":
           doListReports(newLine);
+          break;
+
+        case "run messages.exe":
+          write(newLine);
+          setTimeout(() => onRunProgram("messagingapp"), WRITE_LINE_DELAY);
           break;
 
         default:
