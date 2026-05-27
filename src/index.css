@@ -348,10 +348,12 @@ pre {
   height: 100%;
   min-height: 0;
   isolation: isolate;
+ background-color: var(--clr-bg1);
   color: var(--clr-text1);
+    color: color-mix(in oklab, var(--clr-text1) 80%, var(--clr-accent));
   padding-inline: 1rem;
   padding-block-start: 1rem;
-  border-block-start: 1px solid white;
+  z-index: 1;
 }
 
 @media screen and (width > 1000px) {
@@ -381,6 +383,10 @@ pre {
       padding-block: 0.125rem;
     }
   }
+
+  #backBtn {
+    display: none;
+  }
 }
 
 .messageExitBtn {
@@ -404,6 +410,10 @@ pre {
 
   .message-content {
     flex-grow: 1;
+  }
+
+  .message-list[data-showing-message="true"] {
+    display: none;
   }
 }
 

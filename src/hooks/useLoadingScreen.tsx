@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TYPING_SPEED } from "../utils/constants";
 
 export const useLoadingScreen = (loadingText = "Loading: ") => {
   const [loading, setLoading] = useState(true);
   const [loaded, setLoaded] = useState(0);
+    const hasLoadedOnce = useRef(false);
+
 
   useEffect(() => {
     if (loading) setTimeout(() => setLoaded(0), 0);
@@ -12,6 +14,7 @@ export const useLoadingScreen = (loadingText = "Loading: ") => {
   useEffect(() => {
     if (loaded >= 100) {
       setTimeout(() => setLoading(false));
+      hasLoadedOnce.current = true;
       return;
     }
 
@@ -34,5 +37,5 @@ export const useLoadingScreen = (loadingText = "Loading: ") => {
     </main>
   );
 
-  return { loadingScreen, loading, setLoading };
+  return { loadingScreen, loading, setLoading, hasLoadedOnce: hasLoadedOnce.current };
 };

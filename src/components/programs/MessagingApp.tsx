@@ -11,8 +11,9 @@ interface Message {
 
 export default function MessagingApp({ onExit }: { onExit: () => void }) {
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const { loadingScreen, loading, setLoading } = useLoadingScreen();
+  const { loadingScreen, loading, setLoading, hasLoadedOnce } = useLoadingScreen();
   const selectedMessage = DUMMY_MESSAGES.find((msg) => msg.id === selectedId);
+
 
   return (
     <div className="terminal">
@@ -21,8 +22,9 @@ export default function MessagingApp({ onExit }: { onExit: () => void }) {
           <p>Gunnarsson Message Center™</p>
           <p>Authorized Personnel Only</p>
         </header>
+        {hasLoadedOnce ?
         <div className="message-body">
-          <div className="message-list">
+          <div className="message-list" data-showing-message={selectedId !== null}>
             <ol>
               {DUMMY_MESSAGES.map((msg) => (
                 <li
@@ -50,13 +52,22 @@ export default function MessagingApp({ onExit }: { onExit: () => void }) {
               <div className="msg-placeholder">{loadingScreen}</div>
             ) : null}
             {selectedMessage && !loading ? (
-              <Message msg={selectedMessage} />
+              <>
+                <Message msg={selectedMessage} />
+                <button
+                  className="inlineBtn messageExitBtn"
+                  onClick={() => setSelectedId(null)}
+                  id="backBtn"
+                >
+                  [Back]
+                </button>
+              </>
             ) : null}
             {!loading && !selectedMessage ? (
               <div className="msg-placeholder">Select a message to read</div>
             ) : null}
           </div>
-        </div>
+        </div> : <div className="msg-placeholder">{loadingScreen}</div>}
         <footer>
           <p>Version 8.66.101</p>
           <p>Clearance: HEATHEN</p>
