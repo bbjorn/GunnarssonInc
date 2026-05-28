@@ -6,7 +6,7 @@ interface Message {
   title: string;
   sender: string;
   body: string | string[];
-  reply?: Message;
+  inReplyTo?: Message;
 }
 
 export default function MessagingApp({ onExit }: { onExit: () => void }) {
@@ -82,12 +82,12 @@ const Message = ({ msg }: { msg: Message }) => {
         <p className="msg-body">{msg.body}</p>
       )}
 
-      {msg.reply ? (
+      {msg.inReplyTo ? (
         <>
           <br />
           ---------------------------
           <br />
-          <Message msg={msg.reply} />
+          <Message msg={msg.inReplyTo} />
         </>
       ) : null}
     </>
@@ -95,6 +95,57 @@ const Message = ({ msg }: { msg: Message }) => {
 };
 
 const DUMMY_MESSAGES: Message[] = [
+  {
+    id: 90,
+    title: "Statusuppdatering behövs",
+    sender: "Inga Lindholm <inga.lindholm@gunnarsson.se>",
+    body: [
+      "Hej Ralf,",
+      "Jag ser att din tracker har varit offline ett tag. Kan du slå på den igen? Vi behöver bekräfta att du är på plats inför Novatech-upphandlingen.",
+      "Det räcker om du startar om enheten och ser till att störsändaren är avstängd.",
+      "",
+      "Tack på förhand.",
+      "Inga",
+    ],
+    inReplyTo: {
+      id: 91,
+      title: "Vänligen återkoppla",
+      sender: "Inga Lindholm <inga.lindholm@gunnarsson.se>",
+      body: [
+        "Ralf,",
+        "Trackern fungerar fortfarande inte. Jag börjar bli orolig. Vi måste kunna visa att du är på plats och redo.",
+        "Snälla, slå av störsändaren och bekräfta att du har tillgång till live-länken för offerten.",
+        "",
+        "Det är viktigt, Inga",
+      ],
+      inReplyTo: {
+        id: 92,
+        title: "Ralf, det här är allvar",
+        sender: "Inga Lindholm <inga.lindholm@gunnarsson.se>",
+        body: [
+          "Ralf,",
+          "Jag har försökt nå dig hela dagen. Erika kommer fråga mig om dig och jag har inget svar.",
+          "Du måste slå på trackern, logga in på systemet och dubbelkolla att din offert är redo att skickas in innan klockan tio.",
+          "Jag ber dig, gör det nu.",
+          "",
+          "Inga",
+        ],
+        inReplyTo: {
+          id: 93,
+          title: "NÖDLÄGE: Följ instruktionerna NU",
+          sender: "Inga Lindholm <inga.lindholm@gunnarsson.se>",
+          body: [
+            "Ralf!",
+            "Om du inte svarar nu måste jag kontakta Erika direkt. Du riskerar hela företagets chans på Novatech-kontraktet.",
+            "Slå på trackern, stäng av all störsändning, logga in på live-länken och bekräfta att du är redo. Det är inte svårt!",
+            "Jag orkar inte täcka upp för dig längre. Gör bara som du blivit tillsagd! Snälla!",
+            "",
+            "Inga",
+          ],
+        },
+      },
+    },
+  },
   {
     id: 52,
     title: "First Trial",
@@ -128,30 +179,43 @@ const DUMMY_MESSAGES: Message[] = [
     ], //``,
   },
   {
-    id: 20,
+    id: 22,
     title: "RE: Allt bra?",
-    sender: "Ralf Gunnarsson <ralf.gunnarsson@gunnarsson.se>",
+    sender: "Erika Gunnarsson-Malmstein <erika.gm@skandgov.se>",
     body: [
-      `Hej Mamma!`,
-      "Pff, än så länge har alla skumma typer hållit sig borta från en så pass mäkig viking som mig. Så du har inget att oroa dig för.",
-      "Ja, jag ska varken glömma varken delegationen eller att äta.",
+      "Hej igen Ralf,",
+      "Jag vill bara påminna dig om avtalet inför Novatech-upphandlingen ikväll. Det är viktigt att du håller dig till planen och att vi visar oss på bästa sätt.",
+      "Så glöm inte lämna in budet innan klockan tio ikväll.",
+      "Lycka till! Vi räknar med dig.",
       "",
-      "Hälsningar",
-      "Hralf",
+      "Kram, Mamma",
     ],
-    reply: {
-      id: 19,
-      title: "Allt bra?",
-      sender: "Erika Gunnarsson-Malmstein <erika.gm@skandgov.se>",
+    inReplyTo: {
+      id: 20,
+      title: "RE: Allt bra?",
+      sender: "Ralf Gunnarsson <ralf.gunnarsson@gunnarsson.se>",
       body: [
-        "Hej Ralf,",
-        "Har du det bra i Seattle?  Du håller dig väl borta från skumma typer och undviker att dra onödig uppmärksamhet till familjen? Vi har redan haft nog med journalister som gräver i våra affärer.",
-        "Glöm inte mötet med delegationen från Transys Neuronet nästa helg. Det är viktigt att du gör ett gott intryck.",
-        "Ät ordentligt och hör av dig om du behöver något",
+        `Hej Mamma!`,
+        "Pff, än så länge har alla skumma typer hållit sig borta från en så pass mäkig viking som mig. Så du har inget att oroa dig för.",
+        "Ja, jag ska varken glömma varken delegationen eller att äta.",
         "",
-        "Älskar dig",
-        "- Mamma",
+        "Hälsningar",
+        "Hralf",
       ],
+      inReplyTo: {
+        id: 19,
+        title: "Allt bra?",
+        sender: "Erika Gunnarsson-Malmstein <erika.gm@skandgov.se>",
+        body: [
+          "Hej Ralf,",
+          "Har du det bra i Seattle?  Du håller dig väl borta från skumma typer och undviker att dra onödig uppmärksamhet till familjen? Vi har redan haft nog med journalister som gräver i våra affärer.",
+          "Glöm inte mötet med delegationen från Transys Neuronet nästa helg. Det är viktigt att du gör ett gott intryck.",
+          "Ät ordentligt och hör av dig om du behöver något",
+          "",
+          "Älskar dig",
+          "- Mamma",
+        ],
+      },
     },
   },
   {
@@ -172,37 +236,37 @@ const DUMMY_MESSAGES: Message[] = [
     title: "Lunch Plans",
     sender: "Bob",
     body: "Anyone up for lunch at 12:30?",
-    reply: {
+    inReplyTo: {
       id: 4,
       title: "RE:Lunch Plans",
       sender: "Bob",
       body: "Anyone up for lunch at 12:30?",
-      reply: {
+      inReplyTo: {
         id: 3,
         title: "RE:RE:Lunch Plans",
         sender: "Bob",
         body: "Anyone up for lunch at 12:30?",
-        reply: {
+        inReplyTo: {
           id: 3,
           title: "RE:RE:RE:Lunch Plans",
           sender: "Bob",
           body: "Anyone up for lunch at 12:30?",
-          reply: {
+          inReplyTo: {
             id: 3,
             title: "RE:RE:RE:RE:Lunch Plans",
             sender: "Bob",
             body: "Anyone up for lunch at 12:30?",
-            reply: {
+            inReplyTo: {
               id: 3,
               title: "RE:RE:RE:RE:RE:Lunch Plans",
               sender: "Bob",
               body: "Anyone up for lunch at 12:30?",
-              reply: {
+              inReplyTo: {
                 id: 3,
                 title: "RE:RE:RE:RE:RE:RE:RE:Lunch Plans",
                 sender: "Bob",
                 body: "Anyone up for lunch at 12:30?",
-                reply: {
+                inReplyTo: {
                   id: 3,
                   title: "RE:RE:RE:RE:RE:RE:RE:RE:Lunch Plans",
                   sender: "Bob",
@@ -259,12 +323,12 @@ const DUMMY_MESSAGES: Message[] = [
       "",
       "- Hralf",
     ],
-    reply: {
+    inReplyTo: {
       id: 8,
       title: "RE: Inquiry about Fimbulvetr Project",
       sender: "Fenrir <fenrir@fimbulnet.org>",
       body: ["Who are you? Are you with the police? Prove you're not a cop."],
-      reply: {
+      inReplyTo: {
         id: 9,
         title: "RE: Inquiry about Fimbulvetr Project",
         sender: "Hralf <hralf@theviking.se>",
@@ -273,7 +337,7 @@ const DUMMY_MESSAGES: Message[] = [
           "",
           "- Hralf",
         ],
-        reply: {
+        inReplyTo: {
           id: 10,
           title: "RE: Inquiry about Fimbulvetr Project",
           sender: "Fenrir <fenrir@fimbulnet.org>",
