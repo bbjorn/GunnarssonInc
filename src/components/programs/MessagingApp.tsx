@@ -6,7 +6,8 @@ interface Message {
   title: string;
   sender: string;
   body: string | string[];
-  reply?: Message;
+  timestamp: string;
+  inReplyTo?: Message;
 }
 
 export default function MessagingApp({ onExit }: { onExit: () => void }) {
@@ -82,6 +83,7 @@ const Message = ({ msg }: { msg: Message }) => {
     <>
       <div className="msg-title">{msg.title}</div>
       <div className="msg-sender">From: {msg.sender}</div>
+      <div className="msg-timestamp">{msg.timestamp}</div>
       <br />
       {Array.isArray(msg.body) ? (
         msg.body.map((part, i) => (
@@ -93,12 +95,12 @@ const Message = ({ msg }: { msg: Message }) => {
         <p className="msg-body">{msg.body}</p>
       )}
 
-      {msg.reply ? (
+      {msg.inReplyTo ? (
         <>
           <br />
           ---------------------------
           <br />
-          <Message msg={msg.reply} />
+          <Message msg={msg.inReplyTo} />
         </>
       ) : null}
     </>
@@ -107,9 +109,65 @@ const Message = ({ msg }: { msg: Message }) => {
 
 const DUMMY_MESSAGES: Message[] = [
   {
+    id: 93,
+    title: "NÖDLÄGE: Följ instruktionerna NU",
+    sender: "Inga Lindholm <inga.lindholm@gunnarsson.se>",
+    timestamp: "2064-03-31 17:46",
+    body: [
+      "Ralf!",
+      "Om du inte svarar nu måste jag kontakta Erika direkt. Du riskerar hela företagets chans på Novatech-kontraktet.",
+      "Slå på trackern, stäng av all störsändning, logga in på live-länken och bekräfta att du är redo. Det är inte svårt!",
+      "Jag orkar inte täcka upp för dig längre. Gör bara som du blivit tillsagd! Snälla!",
+      "",
+      "Inga",
+    ],
+    inReplyTo: {
+      id: 92,
+      title: "Ralf, det här är allvar",
+      sender: "Inga Lindholm <inga.lindholm@gunnarsson.se>",
+      timestamp: "2064-03-31 17:11",
+      body: [
+        "Ralf,",
+        "Jag har försökt nå dig hela dagen. Erika kommer fråga mig om dig och jag har inget svar.",
+        "Du måste slå på trackern, logga in på systemet och dubbelkolla att din offert är redo att skickas in innan klockan tio.",
+        "Jag ber dig, gör det nu.",
+        "",
+        "Inga",
+      ],
+      inReplyTo: {
+        id: 91,
+        title: "Vänligen återkoppla",
+        sender: "Inga Lindholm <inga.lindholm@gunnarsson.se>",
+        timestamp: "2064-03-31 15:42",
+        body: [
+          "Ralf,",
+          "Trackern fungerar fortfarande inte. Jag börjar bli orolig. Vi måste kunna visa att du är på plats och redo.",
+          "Snälla, slå av störsändaren och bekräfta att du har tillgång till live-länken för offerten.",
+          "",
+          "Det är viktigt, Inga",
+        ],
+        inReplyTo: {
+          id: 90,
+          title: "Statusuppdatering behövs",
+          sender: "Inga Lindholm <inga.lindholm@gunnarsson.se>",
+          timestamp: "2064-03-31 13:20",
+          body: [
+            "Hej Ralf,",
+            "Jag ser att din tracker har varit offline ett tag. Kan du slå på den igen? Vi behöver bekräfta att du är på plats inför Novatech-upphandlingen.",
+            "Det räcker om du startar om enheten och ser till att störsändaren är avstängd.",
+            "",
+            "Tack på förhand.",
+            "Inga",
+          ],
+        },
+      },
+    },
+  },
+  {
     id: 52,
     title: "First Trial",
     sender: "tuesday@fimbulnet.org",
+    timestamp: "2064-03-31 16:23",
     body: [
       "Hralf.",
       "A warrior who does not think is only a fool with a sword.",
@@ -124,12 +182,14 @@ const DUMMY_MESSAGES: Message[] = [
     id: 45,
     title: "Traffa singelvikingar i din område!",
     sender: "SagaMatch <love@sagamatch.se>",
+    timestamp: "2064-03-31 15:12",
     body: `Ensam pa din langbat? Hitta skoldmo eller barsark nara dig! SagaMatch koppla dig med mest stark hjartan i nor. Registrer nu och fa forsta raid gratis!\n\nFor ara och vanskapp!`,
   },
   {
     id: 43,
     title: "Din Valkyrie-forsikring utløper snart!",
     sender: "Valkyrie Forsikring <valkyrie@asgardcover.no>",
+    timestamp: "2064-03-31 14:30",
     body: [
       "Kjære skjoldbærer",
       "Våre registre viser at din etterlivsforsikring snart utløper. Forny nå for å sikre deg en plass i Valhall. Ikke risiker Helheim - klikk her for å forlenge dekningen!",
@@ -139,36 +199,53 @@ const DUMMY_MESSAGES: Message[] = [
     ], //``,
   },
   {
-    id: 20,
+    id: 22,
     title: "RE: Allt bra?",
-    sender: "Ralf Gunnarsson <ralf.gunnarsson@gunnarsson.se>",
+    sender: "Erika Gunnarsson-Malmstein <erika.gm@skandgov.se>",
+    timestamp: "2064-03-31 14:04",
     body: [
-      `Hej Mamma!`,
-      "Pff, än så länge har alla skumma typer hållit sig borta från en så pass mäkig viking som mig. Så du har inget att oroa dig för.",
-      "Ja, jag ska varken glömma varken delegationen eller att äta.",
+      "Hej igen Ralf,",
+      "Jag vill bara påminna dig om avtalet inför Novatech-upphandlingen ikväll. Det är viktigt att du håller dig till planen och att vi visar oss på bästa sätt.",
+      "Så glöm inte lämna in budet innan klockan tio ikväll.",
+      "Lycka till! Vi räknar med dig.",
       "",
-      "Hälsningar",
-      "Hralf",
+      "Kram, Mamma",
     ],
-    reply: {
-      id: 19,
-      title: "Allt bra?",
-      sender: "Erika Gunnarsson-Malmstein <erika.gm@skandgov.se>",
+    inReplyTo: {
+      id: 20,
+      title: "RE: Allt bra?",
+      sender: "Ralf Gunnarsson <ralf.gunnarsson@gunnarsson.se>",
+      timestamp: "2064-03-30 20:10",
       body: [
-        "Hej Ralf,",
-        "Har du det bra i Seattle?  Du håller dig väl borta från skumma typer och undviker att dra onödig uppmärksamhet till familjen? Vi har redan haft nog med journalister som gräver i våra affärer.",
-        "Glöm inte mötet med delegationen från Transys Neuronet nästa helg. Det är viktigt att du gör ett gott intryck.",
-        "Ät ordentligt och hör av dig om du behöver något",
+        `Hej Mamma!`,
+        "Pff, än så länge har alla skumma typer hållit sig borta från en så pass mäkig viking som mig. Så du har inget att oroa dig för.",
+        "Ja, jag ska varken glömma varken delegationen eller att äta.",
         "",
-        "Älskar dig",
-        "- Mamma",
+        "Hälsningar",
+        "Hralf",
       ],
+      inReplyTo: {
+        id: 19,
+        title: "Allt bra?",
+        sender: "Erika Gunnarsson-Malmstein <erika.gm@skandgov.se>",
+        timestamp: "2064-03-30 9:00",
+        body: [
+          "Hej Ralf,",
+          "Har du det bra i Seattle?  Du håller dig väl borta från skumma typer och undviker att dra onödig uppmärksamhet till familjen? Vi har redan haft nog med journalister som gräver i våra affärer.",
+          "Glöm inte mötet med delegationen från Transys Neuronet nästa helg. Det är viktigt att du gör ett gott intryck.",
+          "Ät ordentligt och hör av dig om du behöver något",
+          "",
+          "Älskar dig",
+          "- Mamma",
+        ],
+      },
     },
   },
   {
     id: 21,
     title: "Påminnelse: Uppdraget",
     sender: "Anders Malmstein <anders.malmstein@erika.fi>",
+    timestamp: "2064-03-31 12:00",
     body: [
       "Ralf,",
       "Som vi diskuterade; röd, blå, gul, grön. De måste återfås.",
@@ -180,44 +257,59 @@ const DUMMY_MESSAGES: Message[] = [
   },
   {
     id: 3,
-    title: "Lunch Plans",
-    sender: "Bob",
+    title: "RE:RE:RE:RE:RE:RE:RE:RE:Lunch Plans",
+    sender: "Sven",
+    timestamp: "2064-03-31 11:23",
     body: "Anyone up for lunch at 12:30?",
-    reply: {
-      id: 4,
-      title: "RE:Lunch Plans",
-      sender: "Bob",
+    inReplyTo: {
+      id: 3,
+      title: "RE:RE:RE:RE:RE:RE:RE:Lunch Plans",
+      sender: "Sven",
+      timestamp: "2064-03-31 11:22",
       body: "Anyone up for lunch at 12:30?",
-      reply: {
+      inReplyTo: {
         id: 3,
-        title: "RE:RE:Lunch Plans",
-        sender: "Bob",
+        title: "RE:RE:RE:RE:RE:RE:Lunch Plans",
+        sender: "Sven",
+        timestamp: "2064-03-31 11:22",
         body: "Anyone up for lunch at 12:30?",
-        reply: {
+        inReplyTo: {
           id: 3,
-          title: "RE:RE:RE:Lunch Plans",
-          sender: "Bob",
+          title: "RE:RE:RE:RE:RE:Lunch Plans",
+          sender: "Sven",
+          timestamp: "2064-03-31 11:22",
           body: "Anyone up for lunch at 12:30?",
-          reply: {
+          inReplyTo: {
             id: 3,
             title: "RE:RE:RE:RE:Lunch Plans",
-            sender: "Bob",
+            sender: "Sven",
+            timestamp: "2064-03-31 11:22",
             body: "Anyone up for lunch at 12:30?",
-            reply: {
+            inReplyTo: {
               id: 3,
-              title: "RE:RE:RE:RE:RE:Lunch Plans",
-              sender: "Bob",
+              title: "RE:RE:RE:Lunch Plans",
+              sender: "Sven",
+              timestamp: "2064-03-31 11:22",
               body: "Anyone up for lunch at 12:30?",
-              reply: {
+              inReplyTo: {
                 id: 3,
-                title: "RE:RE:RE:RE:RE:RE:RE:Lunch Plans",
-                sender: "Bob",
+                title: "RE:RE:Lunch Plans",
+                sender: "Sven",
+                timestamp: "2064-03-31 11:22",
                 body: "Anyone up for lunch at 12:30?",
-                reply: {
-                  id: 3,
-                  title: "RE:RE:RE:RE:RE:RE:RE:RE:Lunch Plans",
-                  sender: "Bob",
+                inReplyTo: {
+                  id: 4,
+                  title: "RE:Lunch Plans",
+                  sender: "Sven",
+                  timestamp: "2064-03-31 11:22",
                   body: "Anyone up for lunch at 12:30?",
+                  inReplyTo: {
+                    id: 3,
+                    title: "Lunch Plans",
+                    sender: "Sven",
+                    timestamp: "2064-03-31 11:21",
+                    body: "Anyone up for lunch at 12:30?",
+                  },
                 },
               },
             },
@@ -230,6 +322,7 @@ const DUMMY_MESSAGES: Message[] = [
     id: 61,
     title: "Morning Brief: News & Rumors",
     sender: "NewsNet (NN) <brief@newsnet.sea>",
+    timestamp: "2064-03-31 07:00",
     body: [
       "Good morning,",
       "",
@@ -252,6 +345,7 @@ const DUMMY_MESSAGES: Message[] = [
     id: 41,
     title: "Erbjudande: Lås upp din inre bärsärk!",
     sender: "Ulfhednar Fitness <berserk@wolfstrength.no>",
+    timestamp: "2064-03-30 18:00",
     body: [
       "Trött på att känna dig svag i sköldmuren?",
       "Vårt patenterade Ulfhednar-träningsprogram släpper lös din inre best. De 100 första får ett gratis vargpälshårband!",
@@ -261,39 +355,43 @@ const DUMMY_MESSAGES: Message[] = [
     ],
   },
   {
-    id: 7,
-    title: "Inquiry about Fimbulvetr Project",
-    sender: "Hralf <hralf@theviking.se>",
+    id: 10,
+    title: "RE: Inquiry about Fimbulvetr Project",
+    sender: "Fenrir <fenrir@fimbulnet.org>",
+    timestamp: "2064-03-30 15:32",
     body: [
-      "Hi,",
-      "Saw your post on FimbulNet about the Fimbulvetr project. I'm looking for more information and maybe some contacts. Let me know if you're willing to talk.",
+      "Hralf,",
+      "Alright, you're for real. Sorry for the suspicion, but you can't be too careful these days.",
+      "If you're interested in what we discussed, meet me in Tacoma tonight at 22:00. Address attached.",
       "",
-      "- Hralf",
+      "- Fenrir",
     ],
-    reply: {
-      id: 8,
+    inReplyTo: {
+      id: 9,
       title: "RE: Inquiry about Fimbulvetr Project",
-      sender: "Fenrir <fenrir@fimbulnet.org>",
-      body: ["Who are you? Are you with the police? Prove you're not a cop."],
-      reply: {
-        id: 9,
+      sender: "Hralf <hralf@theviking.se>",
+      timestamp: "2064-03-30 14:55",
+      body: [
+        "No, I'm not a cop. Here's my SIN as proof. [Attachment: SIN.jpg]",
+        "",
+        "- Hralf",
+      ],
+      inReplyTo: {
+        id: 8,
         title: "RE: Inquiry about Fimbulvetr Project",
-        sender: "Hralf <hralf@theviking.se>",
-        body: [
-          "No, I'm not a cop. Here's my SIN as proof. [Attachment: SIN.jpg]",
-          "",
-          "- Hralf",
-        ],
-        reply: {
-          id: 10,
-          title: "RE: Inquiry about Fimbulvetr Project",
-          sender: "Fenrir <fenrir@fimbulnet.org>",
+        sender: "Fenrir <fenrir@fimbulnet.org>",
+        timestamp: "2064-03-30 14:16",
+        body: ["Who are you? Are you with the police? Prove you're not a cop."],
+        inReplyTo: {
+          id: 7,
+          title: "Inquiry about Fimbulvetr Project",
+          sender: "Hralf <hralf@theviking.se>",
+          timestamp: "2064-03-30 12:10",
           body: [
-            "Hralf,",
-            "Alright, you're for real. Sorry for the suspicion, but you can't be too careful these days.",
-            "If you're interested in what we discussed, meet me in Tacoma tonight at 22:00. Address attached.",
+            "Hi,",
+            "Saw your post on FimbulNet about the Fimbulvetr project. I'm looking for more information and maybe some contacts. Let me know if you're willing to talk.",
             "",
-            "- Fenrir",
+            "- Hralf",
           ],
         },
       },
