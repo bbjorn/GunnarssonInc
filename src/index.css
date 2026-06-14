@@ -325,6 +325,7 @@ pre {
   left: 50%;
   translate: -50% 0;
   width: fit-content;
+  color: hsl(from var(--clr-accent) H S L / .75)
 }
 
 .incident_buttons {
