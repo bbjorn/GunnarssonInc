@@ -4,6 +4,7 @@ import { reports } from "../assets/reports";
 import { useCrash } from "../hooks/useCrash";
 import { TYPING_SPEED, WRITE_LINE_DELAY } from "../utils/constants";
 import type { TTerminalLine } from "../utils/types";
+import { SHIP_NAME } from "./programs/Log";
 
 export const InputLine = ({
   write,
@@ -144,6 +145,16 @@ export const InputLine = ({
         - Launches the Message Center: Read your electronic messages.
         <br />
       </p>,
+         <p>
+        <button
+          className="inlineBtn"
+          onClick={() => writeToCommandLine("run logbook.exe")}
+        >
+          run logbook.exe
+        </button>{" "}
+        - Launches the Logbook of {SHIP_NAME}
+        <br />
+      </p>,
     ];
 
     helpCommands.forEach((cmd, idx) =>
@@ -232,6 +243,11 @@ export const InputLine = ({
         case "run messages.exe":
           write(newLine);
           setTimeout(() => onRunProgram("messagingapp"), WRITE_LINE_DELAY);
+          break;
+
+        case "run logbook.exe":
+          write(newLine);
+          setTimeout(() => onRunProgram("logbook"), WRITE_LINE_DELAY);
           break;
 
         default:

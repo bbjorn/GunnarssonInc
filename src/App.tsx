@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { mjolnir } from "./components/AsciiArt";
+import { MJOLNIR } from "./components/AsciiArt";
 import { InputLine } from "./components/InputLine";
 
 import { useBootup } from "./hooks/useBootup";
@@ -11,6 +11,7 @@ import {
 import Vala from "./components/programs/Vala";
 import TeamTracker from "./components/programs/TeamTracker";
 import MessagingApp from "./components/programs/MessagingApp";
+import Log from "./components/programs/Log";
 
 const isLocalhost = 
   window.location.hostname === "localhost" ||
@@ -21,7 +22,7 @@ const isLocalhost =
 const hasLoadedOnce = window.sessionStorage.getItem("hasLoaded") === "true";
 const bootupSpeedup = hasLoadedOnce ? 0.05 : 1
 
-export type TProgram = "vala" | "teamtracker" | "messagingapp";
+export type TProgram = "vala" | "teamtracker" | "messagingapp" | "logbook";
 
 function App() {
   const { terminalText, terminalLoaded, writeNewLine } = useBootup(
@@ -49,11 +50,15 @@ function App() {
     return <MessagingApp onExit={() => setActiveProgram(null)} />;
   }
 
+  if (activeProgram === "logbook") {
+    return <Log onExit={() => setActiveProgram(null)} />;
+  }
+
   return (
     <>
       <div className="terminal">
         <div className="asciiImg">
-          <pre>{mjolnir}</pre>
+          <pre>{MJOLNIR}</pre>
         </div>
         {terminalText.map((line) =>
           typeof line === "string" ? (

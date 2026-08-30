@@ -1,4 +1,4 @@
-import { useEffect, useEffectEvent, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoadingScreen } from "../../hooks/useLoadingScreen";
 
 export default function TeamTracker({ onExit }: { onExit: () => void }) {
