@@ -2,11 +2,12 @@ import { useEffect, useEffectEvent, useState } from "react";
 import { useLoadingScreen } from "../../hooks/useLoadingScreen";
 
 export default function TeamTracker({ onExit }: { onExit: () => void }) {
-  const [currentTime, setCurrentTime] = useState({ h: "00", m: "00", s: "00" });
+  //const [currentTime, setCurrentTime] = useState({ h: "00", m: "00", s: "00" });
   const { loadingScreen, loading, setLoading } = useLoadingScreen();
   const [location, setLocation] = useState(getRandomLocation());
   const [showReport, setShowReport] = useState<null | number>(null);
 
+  /*
   const updateTime = useEffectEvent((time: Date) => {
     function formatTime(number: number) {
       return number < 10 ? "0" + number : "" + number;
@@ -20,19 +21,20 @@ export default function TeamTracker({ onExit }: { onExit: () => void }) {
       s: formatTime(time.getSeconds()),
     });
   });
-
+  */
   useEffect(() => {
     function updateApp() {
       setTimeout(() => {
-        updateTime(new Date());
+       // updateTime(new Date());
         updateApp();
         setLocation(getRandomLocation());
       }, 10 * 1000);
     }
-    updateTime(new Date());
+    // updateTime(new Date());
     updateApp();
   }, []);
 
+  
   const openReport = (index: number) => {
     setShowReport(index);
     setLoading(true);
@@ -42,10 +44,10 @@ export default function TeamTracker({ onExit }: { onExit: () => void }) {
     <div className="terminal">
       <div className="program tracker">
         <header className="program-header">
-          <p>LIVE FEED </p>
+          <p>ARCHIVED FEED </p>
           <p>2064-03-31</p>
           <p>
-            {currentTime.h}:{currentTime.m}:{currentTime.s}
+            23:03:12
           </p>
         </header>
 
@@ -102,15 +104,9 @@ export default function TeamTracker({ onExit }: { onExit: () => void }) {
             </div>
 
             <div>
-              <p>{">> SYSTEM NOTICES:"}</p>
-              <p>
-                - WARNING: Asset R. Gunnarsson's tracker is experiencing
-                INTERFERENCE.
-              </p>
-              <p>
-                - REMINDER: Report any unusual activity to E.
-                Malmstein-Gunnarsson.
-              </p>
+              <p>{">> SYSTEM NOTICES (ARCHIVED):"}</p>
+              <p>- WARNING: Asset R. Gunnarsson's tracker was COMPROMISED by an unknown virus on 2064-03-31.</p>
+              <p>- REMINDER: All data from this node is QUARANTINED. Report any attempts to restore to E. Malmstein-Gunnarsson.</p>
             </div>
 
             <div className="incident_buttons">

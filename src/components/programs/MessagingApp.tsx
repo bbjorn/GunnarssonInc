@@ -21,7 +21,7 @@ export default function MessagingApp({ onExit }: { onExit: () => void }) {
       <div className="program messaging-app">
         <header className="program-header">
           <p>Gunnarsson Message Center™</p>
-          <p>Authorized Personnel Only</p>
+          <p>ARCHIVED 2064-03-31</p>
         </header>
         {hasLoadedOnce ?
         <div className="message-body">
