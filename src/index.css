@@ -92,13 +92,8 @@ h6 {
 }
 
 .terminal {
-  background: linear-gradient(0deg, var(--clr-text1), var(--clr-accent));
   background-size: 1px 100dvh;
   background-position: bottom;
-  -webkit-background-clip: text;
-  /* -webkit-text-fill-color: transparent; */
-  background-clip: text;
-  color: transparent;
   padding: calc(2 * var(--px)) calc(2 * var(--py));
   margin: 0;
   position: fixed;
@@ -106,6 +101,14 @@ h6 {
   left: 0;
   right: 0;
   overflow: scroll;
+
+  &:not(:has(* .message-content)) {
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+    background: linear-gradient(0deg, var(--clr-text1), var(--clr-accent));
+    background-clip: text;
+    color: transparent;
+  }
 
   & input {
     border: none;
@@ -336,6 +339,14 @@ pre {
   justify-content: center;
 }
 
+.messaging-app > .program-header {
+  color: color-mix(in oklab, var(--clr-text1) 10%, var(--clr-accent) 90%);
+}
+
+.messaging-app > footer {
+  color: color-mix(in oklab, var(--clr-text1) 80%, var(--clr-accent) 20%);
+}
+
 .message-body {
   display: grid;
   gap: 1rem;
@@ -355,6 +366,11 @@ pre {
   padding-inline: 1rem;
   padding-block-start: 1rem;
   z-index: 1;
+}
+
+.message-list li::marker {
+  color: var(--clr-text1);
+  color: color-mix(in oklab, var(--clr-text1) 35%, var(--clr-accent));
 }
 
 @media screen and (width > 1000px) {
@@ -425,10 +441,10 @@ pre {
 }
 
 .program-bg-img {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: -1;
-  color: hsl(from var(--clr-accent) H S L / .125);
+  color: hsl(from var(--clr-accent) H S L / .25);
   display: grid;
   place-content: center;
 }
