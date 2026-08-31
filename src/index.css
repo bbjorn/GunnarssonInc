@@ -440,11 +440,28 @@ pre {
   place-content: center;
 }
 
+.msg-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: auto;
+  gap: 1rem;
+
+
+  &:has(~ #backBtn) {
+    margin-block-end: 4rem;
+  }
+
+  & > #nextBtn {
+    margin-inline-start: auto;
+  }
+}
+
+
 .program-bg-img {
   position: fixed;
   inset: 0;
   z-index: -1;
-  color: hsl(from var(--clr-accent) H S L / .25);
+  color: hsl(from var(--clr-accent) H S L / .2);
   display: grid;
   place-content: center;
 }
