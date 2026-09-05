@@ -3,7 +3,7 @@ import { useLoadingScreen } from "../../hooks/useLoadingScreen";
 import { DRAKKAR_SMALL } from "../AsciiArt";
 import { LOG_ENTERIES, type LogEntry } from "../../assets/logentries";
 
-export const SHIP_NAME = "MLS Ormen Röde";
+export const SHIP_NAME = "MLS Järnormen";
 
 const getInLarpDate = () => {
   // Returns the date of the latest message in the logbook in the format YYYY-MM-DD
