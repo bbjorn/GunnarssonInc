@@ -4,7 +4,13 @@ import { TYPING_SPEED } from "../utils/constants";
 export const useLoadingScreen = (loadingText = "Loading: ") => {
   const [loading, setLoading] = useState(true);
   const [loaded, setLoaded] = useState(0);
-    const hasLoadedOnce = useRef(false);
+  const hasLoadedOnce = useRef(false);
+
+  const resetHasLoadedOnce = () => {
+    hasLoadedOnce.current = false;
+    setLoading(true);
+    setLoaded(0)
+  }
 
 
   useEffect(() => {
@@ -37,5 +43,5 @@ export const useLoadingScreen = (loadingText = "Loading: ") => {
     </main>
   );
 
-  return { loadingScreen, loading, setLoading, hasLoadedOnce: hasLoadedOnce.current };
+  return { loadingScreen, loading, setLoading, hasLoadedOnce: hasLoadedOnce.current, resetHasLoadedOnce};
 };

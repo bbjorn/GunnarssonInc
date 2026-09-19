@@ -416,6 +416,17 @@ pre {
 .messageExitBtn {
   margin-block-start: auto;
   width: 100%;
+
+  &:has(+ .messageExitBtn){
+    margin-bottom: 2rem;
+  }
+}
+
+.noMessages {
+  text-align: center;
+  height: 8rem;
+  display: grid;
+  place-content: center;
 }
 
 @media screen and (width <= 1000px) {
@@ -438,7 +449,7 @@ pre {
   }
 
   .message-list {
-    height: 4rem;
+    min-height: 4rem;
     flex-basis: max-content;
   }
 

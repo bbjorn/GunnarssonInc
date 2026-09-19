@@ -197,5 +197,65 @@ export const LOG_ENTERIES: LogEntry[] = [
       "Two of the chummers from Tórshavn decided to stay here. But we picked up a few new ones at the party, so it all balanced out in the end.",
       "We shall set sail for UCAS tomorrow, looking forward to see Newfoundland, which I believe the vikings of old called Vinland.",
     ]
+  },{
+    timestamp: "2064-06-14 09:03",
+    body: [ 
+      "Following in the footsteps of the great viking explorer, Leif Erikson, we have arrived in Newfoundland, and we are currently anchoring in the Médée Bay.",
+      "This is our final stop in the lands of the vikings. The settlement here is quite rustic and some good saunas. ", 
+      "Yesterday we went fishing for giant sea serpents, but it got away. We are going to try again tomorrow, and hopefully we will have better luck.",
+      "Hopefully we'll be able to shoot it tomorrow. It is a beautiful creature, and I would really like to have a picture of it to show when I return home.",
+    ], 
+  }, {
+    timestamp: "2064-06-17 23:14",
+    body: [
+      "met a troll in boston he said we shuld go for drnks",
+      "i told him i culd drink him under the tablle",
+      "IM THE BEST DRINKERER IN THE WORLd... maybe...",
+      "also why is ship moving",
+      "where we going??"
+    ]
+  }, {
+    timestamp: "2064-07-03 13:47",
+    body: [
+      "Woke up anchored by some sandy beach. There are palms here.",
+      "My head is killing me and things are kind of hazy.",
+      "Hazmat, the troll chummer we met in Boston really knows how to throw a party.",
+      "I think we are in the Caribbean League now. At least it is too hot to be Valhalla."
+    ]
+  }, {
+    timestamp: "2064-07-04 18:31",
+    body: [
+      "Apparently we were achored just a few hours west of Havana, to which we have now sailed.",
+      'Hazmat has decided to part way with us here as he is hitch a ride towards Kingston, where they have "the best smoke".',
+      "This apparently angred some of locals that overheard us, they claimed cuban cigars are the best. So we got into a fist fight.",
+      "Hopefully we'll see Hazmat again on our journey - I going to miss the chummer.",
+    ]
+  }, {
+    timestamp: "2064-07-08 16:52",
+    body: [
+      'Met old salty sailor chummer who was looking for a crew to go help him find "The Lost Treasure of Captain Carlos el Borracho".', 
+      "Spent a couple sailing looking for ship wrecks, most of them were a lot more recent that I expected.",
+      "In the end we found a cargo ship that couldn't have sunk more than a couple of weeks ago.",
+      "The old salt got all extatic and we dove down and picked up an sealed container for him.",
+      "We dropped off the old sailor and his box at Havana, now we are sailing towards Aztlan."
+    ]
+  }, {
+    timestamp: "2064-07-15 17:22",
+    body: [
+      "We have been docked in Progresso, Yucatán, for about a weeks now.", 
+      "Apparently this is where the comet that killed the dinosaurs crashed into the earth.", 
+      "We made friends with a local who goes by the name of \"la Generala.\" She's been showing us around, and from what she says, this place has a lot of history.",
+      "From what I can tell, the locals are all pretty angry about that peace treaty. La Generala says they're sure Aztlan is just licking their wounds and will attack again at any moment.",
+      "She also mentioned that most people here think the Zapatistas shouldn't stop their rebellion until all of Mexico is free.",
+      "Otherwise, the food is great, and we should really get one of those cenotes in Sweden."
+    ]
+  }, {
+    timestamp: "2064-07-19 13:35",
+    body: [
+      "We are now leaving Yucatán and are sailing east.", 
+      "La Generala has decided to join us, as she is convinced that she can spread her Zapatista ideas to rest of Aztlan.",
+      "It's hard to disagree after everything she showed us, and our route will take us through most of the coast of the country.",
+      "But before that we do that, we will take a short detour as we hope to catch up with Hazmat on Jamaica",
+    ]
   }
 ];
