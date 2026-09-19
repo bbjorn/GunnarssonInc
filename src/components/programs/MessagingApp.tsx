@@ -36,7 +36,7 @@ export default function MessagingApp({ onExit }: { onExit: () => void }) {
                   <button
                     className="inlineBtn"
                     onClick={() => {
-                      setLoading(true);
+                      setLoading(msgLengthReducer(msg) / 10);
                       setSelectedId(msg.id);
                     }}
                   >
@@ -111,3 +111,6 @@ const Message = ({ msg }: { msg: TMessage }) => {
   );
 };
 
+const msgLengthReducer: (msg: TMessage) => number = (msg) => msg.inReplyTo ? msgLength(msg) + msgLengthReducer(msg.inReplyTo) : msgLength(msg);
+
+const msgLength = (msg:TMessage) =>  typeof msg.body === "string" ? msg.body.length : msg.body.reduce((acc, cur) => acc + cur.length, 0)

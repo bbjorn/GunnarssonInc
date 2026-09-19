@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { TYPING_SPEED } from "../utils/constants";
 
 export const useLoadingScreen = (loadingText = "Loading: ") => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean | number>(true);
   const [loaded, setLoaded] = useState(0);
   const hasLoadedOnce = useRef(false);
 
@@ -26,7 +26,7 @@ export const useLoadingScreen = (loadingText = "Loading: ") => {
 
     setTimeout(() => {
       setLoaded((prev) => Math.min(prev + Math.ceil(Math.random() * 10), 100));
-    }, TYPING_SPEED);
+    }, typeof loading === "number" ?  loading : TYPING_SPEED);
   }, [loaded]);
 
   // Render a loading bar with 20 segments

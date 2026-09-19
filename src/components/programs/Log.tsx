@@ -111,7 +111,7 @@ const Message = ({
   msg: LogEntry & { id: number };
   setSelectedId: (id: number | null) => void;
   nbrOfEntries: number;
-  setLoading: (loading: boolean) => void;
+  setLoading: (loading: boolean | number) => void;
 }) => {
   return (
     <>
@@ -130,7 +130,7 @@ const Message = ({
             className="inlineBtn"
             onClick={() => {
               setSelectedId(msg.id - 1);
-              setLoading(true);
+              setLoading(20);
             }}
             id="prevBtn"
           >
@@ -142,7 +142,7 @@ const Message = ({
             className="inlineBtn"
             onClick={() => {
               setSelectedId(msg.id + 1);
-              setLoading(true);
+              setLoading(20);
             }}
             id="nextBtn"
           >
