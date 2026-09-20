@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { useLoadingScreen } from "../../hooks/useLoadingScreen";
-import { ARCHIEVED_MESSAGES, CURRENT_MESSAGES, type TMessage } from "../../assets/messages";
+import { ARCHIEVED_MESSAGES, CURRENT_MESSAGES, SECRET_MESSAGES, type TMessage } from "../../assets/messages";
+
+const ALL_CURRENT_MESSAGES = [...CURRENT_MESSAGES, ...SECRET_MESSAGES].sort((a,b) => new Date(a.timestamp).getTime() < new Date(b.timestamp).getTime() ? 1 : -1 );
 
 export default function MessagingApp({ onExit }: { onExit: () => void }) {
+  const larpStartTime = new Date("2026-09-26T15:00:00").getTime();
+  const currentTime =  new Date().getTime();
+  const currentMessages = currentTime > larpStartTime ? ALL_CURRENT_MESSAGES : CURRENT_MESSAGES;
+
   const [showArchieved, setShowArchieved] = useState(false);
-  const [messageList, setMessageList] = useState(showArchieved ? ARCHIEVED_MESSAGES : CURRENT_MESSAGES)
+  const [messageList, setMessageList] = useState(showArchieved ? ARCHIEVED_MESSAGES : currentMessages)
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const { loadingScreen, loading, setLoading, hasLoadedOnce, resetHasLoadedOnce } = useLoadingScreen();
   const selectedMessage = messageList.find((msg) => msg.id === selectedId);
@@ -12,10 +18,9 @@ export default function MessagingApp({ onExit }: { onExit: () => void }) {
   const onToggleArchive = (showArchive: boolean) => {
     setSelectedId(null);
     setShowArchieved(showArchive);
-    setMessageList(showArchive ? ARCHIEVED_MESSAGES : CURRENT_MESSAGES);
+    setMessageList(showArchive ? ARCHIEVED_MESSAGES : currentMessages);
     resetHasLoadedOnce();
   }
-
 
   return (
     <div className="terminal">
@@ -29,7 +34,7 @@ export default function MessagingApp({ onExit }: { onExit: () => void }) {
           <div className="message-list" data-showing-message={selectedId !== null}>
           <ol>
               {messageList.map((msg) => (
-                    <li
+                <li
                   key={msg.id}
                   className={selectedId === msg.id ? "selected" : ""}
                 >

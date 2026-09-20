@@ -8,7 +8,30 @@ export type TMessage = {
   inReplyTo?: TMessage;
 }
 
-export const CURRENT_MESSAGES: TMessage[] = []
+
+export const CURRENT_MESSAGES: TMessage[] = [
+  {
+    id: 101,
+    title: "test",
+    timestamp: "2064-11-01 12:32",
+    body: "Om testet funkar ska det här meddelandet hamna underst",
+    sender: "G.O.D."
+  }
+]
+
+export const SECRET_MESSAGES: TMessage[] = [
+  {
+    id: 201,
+    title: "decrypt failure - erroR 47",
+    sender: "proxymax@puyalluprouter.ROT.com",
+    timestamp: "2064-11-01 21:47",
+    body: [
+      "y28 325 y@9??J DäEE2 52E2? Aå 6EE 49:A F?56C 3ä?<6? =ä?8DE :? E:== 9ö86C]",
+      "~> ;28 5öC 9äC[ Dä8 E:== {66 2EE 56? 2?5C2 52E2? 7:??D 5äC 92? <=@EEC256 56E 5äC 5C6<<:?8 $i6E]]]",
+      `\\ |2I`
+    ]
+  }
+]
 
 export const ARCHIEVED_MESSAGES: TMessage[] = [
   {
