@@ -257,5 +257,37 @@ export const LOG_ENTERIES: LogEntry[] = [
       "It's hard to disagree after everything she showed us, and our route will take us through most of the coast of the country.",
       "But before that we do that, we will take a short detour as we hope to catch up with Hazmat on Jamaica",
     ]
+  }, {
+    timestamp: "2064-07-23 09:02",
+    body: [
+      "We arrived in Kingston yesterday. Spent the evening looking for Hazmat, but he's off the grid, lost in a rum haze. No luck reaching him.",
+      "Met a street vendor with the best cucumba sandwiches I've ever had. Also ran into a pirate captain called Red. He told us about a boat race tomorrow, the Raggae Regatta, and talked us into entering. His smile was a little too sharp."
+    ]
+  }, {
+    timestamp: "2064-07-24 15:32", 
+    body:[
+      "The race was chaos. We placed third. Rules were loose, the wind was rough, and at one point, we sailed through a patch of fog that just… made everything feel generally weird. The crowd went quiet. The water shimmered. The ship's sensors picked up a signal that didn't make sense.",
+      "Red invited us to an after-party tonight. His crew was already passing around a barrel of something labeled \"Rum? Maybe?\"."
+    ]
+  }, {
+    timestamp: "2064-07-25 14:22",
+    body: [
+      "Finally found Hazmat at the party last night. He'd been with a Rastafari priest named Papa Dee. The music was loud, the rum was strong, and the vibes were thick. We stayed until the sun came up.",
+      "Today we shall sober up and get ready to sail towards Panama tomorrow.",
+      "La Generala has instructed me that we need operational silence during our mission through Aztlan, so expect the next log book update come once we have reached the Pueblo Corporate Council."
+    ]
+  }, {
+    timestamp: "2064-07-26 07:30",
+    body: [
+     "La Generala's instructions are clear: no logs until we reach Pueblo territory. So this will be the last entry for a while.",
+     "Hazmat said it was \"too many rules\" and decided to stay in Jamaica. But I think Þóra turning down his advancements at the party yesterday might have had more to do with it."
+    ]
+  }, {
+    timestamp: "2064-09-29 12:32",
+    body: [
+      "I can finally write again! I loved Aztlan, the food, the people, the music... though not so much the opressive goverment and getting shot at by Eagle Warriors.",
+      "But La Generala tells me we made some great progress in liberating the southern and western states, so hopefully that is about to change.",
+      "Tomorrow we will reach Los Angeles. All of my favourite trideos are made there and I really want to see if I can find those Frisian Vikings."
+    ]
   }
 ];

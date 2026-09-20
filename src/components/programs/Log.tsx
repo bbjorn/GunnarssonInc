@@ -50,7 +50,7 @@ export default function Log({ onExit }: { onExit: () => void }) {
                       <button
                         className="inlineBtn"
                         onClick={() => {
-                          setLoading(true);
+                          setLoading(20);
                           setSelectedId(msg.id);
                         }}
                       >

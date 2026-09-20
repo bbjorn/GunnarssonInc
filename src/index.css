@@ -375,6 +375,10 @@ pre {
   padding-inline-end: 1rem;
 }
 
+.message-list li {
+  padding-block: 0.25rem;
+}
+
 .message-list li::marker {
   color: var(--clr-text1);
   color: color-mix(in oklab, var(--clr-text1) 35%, var(--clr-accent));
@@ -402,10 +406,10 @@ pre {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+  }
 
-    & li {
-      padding-block: 0.125rem;
-    }
+  .message-list li {
+    padding-block: 0.125rem;
   }
 
   #backBtn {
