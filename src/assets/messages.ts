@@ -1,4 +1,3 @@
-
 export type TMessage = {
   id: number;
   title: string;
@@ -6,18 +5,82 @@ export type TMessage = {
   body: string | string[];
   timestamp: string;
   inReplyTo?: TMessage;
-}
+};
 
+export const CURRENT_MESSAGES: TMessage[] = [];
 
-export const CURRENT_MESSAGES: TMessage[] = [
+export const SPAM_MESSAGES: TMessage[] = [
   {
-    id: 101,
-    title: "test",
-    timestamp: "2064-11-01 12:32",
-    body: "Om testet funkar ska det här meddelandet hamna underst",
-    sender: "G.O.D."
-  }
-]
+    id: 301,
+    title: "Du har vunnit 1.000 ¥ på ValhallaLotto!",
+    sender: "LottoOden@ValhallaLotto",
+    body: [
+      "Leif \"Tåget\" Odinsson här,",
+      "Ralf, ditt SIN-nummer har blivit draget av LottoBalder och du är en vinnare!",
+      "Du har vunnit 1.000 ¥ på ValhallaLotto!",
+      "Hämta din vinst via: [Grid Node: ValhallaLotto#RALF888]",
+      "Men skynda dig! För detta erbjudandet gäller endast i 24 timmar!",
+    ],
+    timestamp: "2064-11-01 23:46",
+  },
+  {
+    id: 302,
+    title: "⚡ EXKLUSIVT: Berserker-Chip Oppgradering ⚡",
+    sender: "TechSeidr@NordicNet-Nexus",
+    body: [
+      "Krigere, cyber-chippet ditt er for gammalt for Ragnarök!",
+      "Få 30% rabatt på den nye Berserker-3000™ Neural Chip!",
+      "Tilgang via: [Grid Node: NordicNet-Berserker#Chip]",
+      "Bare for sanne krigere!",
+    ],
+    timestamp: "2064-11-02 08:29",
+  },
+  {
+    id: 303,
+    title: "🔥 Valkyrja Dating Service für dich! 🔥",
+    sender: "Schildmaid@Valhalla-Love-Host",
+    body: [
+      "153 Valkyrjer in deiner Nähe warten auf dich!",
+      "Registriere dich JETZT für eine KOSTENLOSE Runen-Analyse!",
+      "Verbinde dich via: [Grid Node: Valhalla-Love#Valkyrie]",
+      "Nur für wahre Krieger!",
+    ],
+    timestamp: "2064-11-02 14:15",
+  },
+  {
+    id: 304,
+    title: "IMPORTANT: Your package has been blocked in Aztlan!",
+    sender: "KegariDelivery@Tirna-Host",
+    body: [
+      "Your package of Ares Monofilament Axe (ID: KG-459X) is stuck in Aztlan customs.",
+      "Pay 300 ¥ to release it: [Credstick: Tirna-Payment#KG-459X]",
+      "Or Lone Star will take it!",
+    ],
+    timestamp: "2064-10-31 09:56",
+  },
+  {
+    id: 305,
+    title: "⚠️ YOUR SIN-NUMBER IS COMPROMISED! ⚠️",
+    sender: "SecurityAlert@L0neStár-Host",
+    body: [
+      "Your SIN has been detected in illegal database!",
+      "Pay 500 ¥ via [Credstick: L0neStár-Protec#LEAK2064] to secure!",
+      "Or face consequences!",
+    ],
+    timestamp: "2064-11-01 05:41",
+  },
+  {
+    id: 306,
+    title: "¡Tu suscripción VIP está a punto de expirar!",
+    sender: "VIP-Service@Áztechnology-Host",
+    body: [
+      "Tu suscripción VIP a Aztechnology está a punto de expirar!",
+      "Renueva AHORA via [Credstick: Áztlan-VIP#Suscriptión] por solo 800 ¥/año!",
+      "¡No pierdas acceso a los beneficios exclusivos!",
+    ],
+    timestamp: "2064-11-02 06:06",
+  },
+];
 
 export const SECRET_MESSAGES: TMessage[] = [
   {
@@ -28,10 +91,10 @@ export const SECRET_MESSAGES: TMessage[] = [
     body: [
       "y28 325 y@9??J DäEE2 52E2? Aå 6EE 49:A F?56C 3ä?<6? =ä?8DE :? E:== 9ö86C]",
       "~> ;28 5öC 9äC[ Dä8 E:== {66 2EE 56? 2?5C2 52E2? 7:??D 5äC 92? <=@EEC256 56E 5äC 5C6<<:?8 $i6E]]]",
-      `\\ |2I`
-    ]
-  }
-]
+      `\\ |2I`,
+    ],
+  },
+];
 
 export const ARCHIEVED_MESSAGES: TMessage[] = [
   {

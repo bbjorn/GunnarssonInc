@@ -1,18 +1,47 @@
 import { useState } from "react";
 import { useLoadingScreen } from "../../hooks/useLoadingScreen";
-import { ARCHIEVED_MESSAGES, CURRENT_MESSAGES, SECRET_MESSAGES, type TMessage } from "../../assets/messages";
+import {
+  ARCHIEVED_MESSAGES,
+  CURRENT_MESSAGES,
+  SECRET_MESSAGES,
+  SPAM_MESSAGES,
+  type TMessage,
+} from "../../assets/messages";
 
-const ALL_CURRENT_MESSAGES = [...CURRENT_MESSAGES, ...SECRET_MESSAGES].sort((a,b) => new Date(a.timestamp).getTime() < new Date(b.timestamp).getTime() ? 1 : -1 );
+const ALL_CURRENT_MESSAGES = [
+  ...CURRENT_MESSAGES,
+  ...SECRET_MESSAGES,
+  ...SPAM_MESSAGES,
+].sort((a, b) =>
+  new Date(a.timestamp).getTime() < new Date(b.timestamp).getTime() ? 1 : -1,
+);
+
+const ALL_NON_SECRET_CURRENT_MESSAGES = [
+  ...CURRENT_MESSAGES,
+  ...SPAM_MESSAGES,
+].sort((a, b) =>
+  new Date(a.timestamp).getTime() < new Date(b.timestamp).getTime() ? 1 : -1,
+);
+
 
 export default function MessagingApp({ onExit }: { onExit: () => void }) {
   const larpStartTime = new Date("2026-09-26T15:00:00").getTime();
-  const currentTime =  new Date().getTime();
-  const currentMessages = currentTime > larpStartTime ? ALL_CURRENT_MESSAGES : CURRENT_MESSAGES;
+  const currentTime = new Date().getTime();
+  const currentMessages =
+    currentTime > larpStartTime ? ALL_CURRENT_MESSAGES : ALL_NON_SECRET_CURRENT_MESSAGES;
 
   const [showArchieved, setShowArchieved] = useState(false);
-  const [messageList, setMessageList] = useState(showArchieved ? ARCHIEVED_MESSAGES : currentMessages)
+  const [messageList, setMessageList] = useState(
+    showArchieved ? ARCHIEVED_MESSAGES : currentMessages,
+  );
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const { loadingScreen, loading, setLoading, hasLoadedOnce, resetHasLoadedOnce } = useLoadingScreen();
+  const {
+    loadingScreen,
+    loading,
+    setLoading,
+    hasLoadedOnce,
+    resetHasLoadedOnce,
+  } = useLoadingScreen();
   const selectedMessage = messageList.find((msg) => msg.id === selectedId);
 
   const onToggleArchive = (showArchive: boolean) => {
@@ -20,7 +49,7 @@ export default function MessagingApp({ onExit }: { onExit: () => void }) {
     setShowArchieved(showArchive);
     setMessageList(showArchive ? ARCHIEVED_MESSAGES : currentMessages);
     resetHasLoadedOnce();
-  }
+  };
 
   return (
     <div className="terminal">
@@ -29,55 +58,68 @@ export default function MessagingApp({ onExit }: { onExit: () => void }) {
           <p>Gunnarsson Message Center™</p>
           <p>{showArchieved ? "ARCHIVED 2064-03-31" : "2064-11-02"}</p>
         </header>
-        {hasLoadedOnce ?
-        <div className="message-body">
-          <div className="message-list" data-showing-message={selectedId !== null}>
-          <ol>
-              {messageList.map((msg) => (
-                <li
-                  key={msg.id}
-                  className={selectedId === msg.id ? "selected" : ""}
-                >
-                  <button
-                    className="inlineBtn"
-                    onClick={() => {
-                      setLoading(msgLengthReducer(msg) / 10);
-                      setSelectedId(msg.id);
-                    }}
+        {hasLoadedOnce ? (
+          <div className="message-body">
+            <div
+              className="message-list"
+              data-showing-message={selectedId !== null}
+            >
+              <ol>
+                {messageList.map((msg) => (
+                  <li
+                    key={msg.id}
+                    className={selectedId === msg.id ? "selected" : ""}
                   >
-                    [{msg.title}]
+                    <button
+                      className="inlineBtn"
+                      onClick={() => {
+                        setLoading(msgLengthReducer(msg) / 10);
+                        setSelectedId(msg.id);
+                      }}
+                    >
+                      [{msg.title}]
+                    </button>
+                  </li>
+                ))}
+              </ol>
+              <button
+                className="inlineBtn messageExitBtn"
+                onClick={() => onToggleArchive(!showArchieved)}
+              >
+                [Show {showArchieved ? "current" : "archived"} messages]
+              </button>
+              <button className="inlineBtn messageExitBtn" onClick={onExit}>
+                [Exit]
+              </button>
+            </div>
+            <div className="message-content">
+              {loading ? (
+                <div className="msg-placeholder">{loadingScreen}</div>
+              ) : null}
+              {selectedMessage && !loading ? (
+                <>
+                  <Message msg={selectedMessage} />
+                  <button
+                    className="inlineBtn messageExitBtn"
+                    onClick={() => setSelectedId(null)}
+                    id="backBtn"
+                  >
+                    [Back]
                   </button>
-                </li>    
-              ))}
-            </ol>
-            <button className="inlineBtn messageExitBtn" onClick={() => onToggleArchive(!showArchieved)}>
-              [Show {showArchieved ? "current" : "archived"} messages]
-            </button>
-            <button className="inlineBtn messageExitBtn" onClick={onExit}>
-              [Exit]
-            </button>
+                </>
+              ) : null}
+              {!loading && !selectedMessage ? (
+                <div className="msg-placeholder">
+                  {messageList.length > 0
+                    ? "Select a message to read"
+                    : "No new messages"}
+                </div>
+              ) : null}
+            </div>
           </div>
-          <div className="message-content">
-            {loading ? (
-              <div className="msg-placeholder">{loadingScreen}</div>
-            ) : null}
-            {selectedMessage && !loading ? (
-              <>
-                <Message msg={selectedMessage} />
-                <button
-                  className="inlineBtn messageExitBtn"
-                  onClick={() => setSelectedId(null)}
-                  id="backBtn"
-                >
-                  [Back]
-                </button>
-              </>
-            ) : null}
-            {!loading && !selectedMessage ? (
-              <div className="msg-placeholder">{messageList.length > 0 ? "Select a message to read" : "No new messages"}</div>
-            ) : null}
-          </div>
-        </div> : <div className="msg-placeholder">{loadingScreen}</div>}
+        ) : (
+          <div className="msg-placeholder">{loadingScreen}</div>
+        )}
         <footer>
           <p>Version 8.66.101</p>
           <p>Clearance: HEATHEN</p>
@@ -116,6 +158,12 @@ const Message = ({ msg }: { msg: TMessage }) => {
   );
 };
 
-const msgLengthReducer: (msg: TMessage) => number = (msg) => msg.inReplyTo ? msgLength(msg) + msgLengthReducer(msg.inReplyTo) : msgLength(msg);
+const msgLengthReducer: (msg: TMessage) => number = (msg) =>
+  msg.inReplyTo
+    ? msgLength(msg) + msgLengthReducer(msg.inReplyTo)
+    : msgLength(msg);
 
-const msgLength = (msg:TMessage) =>  typeof msg.body === "string" ? msg.body.length : msg.body.reduce((acc, cur) => acc + cur.length, 0)
+const msgLength = (msg: TMessage) =>
+  typeof msg.body === "string"
+    ? msg.body.length
+    : msg.body.reduce((acc, cur) => acc + cur.length, 0);
