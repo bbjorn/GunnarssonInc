@@ -301,7 +301,7 @@ export const LOG_ENTERIES: LogEntry[] = [
     timestamp: "2064-10-06 09:52",
     body: [
       "First day on the set at Pathfinder Studios. The dresser has my name on it \"Hralf Bloodaxe\". I convinced the scriptwriter, Jaime Camáron, that Hralf is the best name for a viking so he agreed to change my character's name.",
-      "Spent four hours in makeup while a very serious woman braided my beard and explained that \"historical accuracy is not the vibe (director) Fjord is going for.\""
+      "Spent four hours in makeup while a very serious woman braided my beard and explained that \"historical accuracy is not the vibe director Fjord is going for.\""
     ]
   },
   {
@@ -328,6 +328,18 @@ export const LOG_ENTERIES: LogEntry[] = [
       "I will see them again the next time I am in LA.", 
     ]
   }, {
-    timestamp: "2064-10"
+    timestamp: "2064-10-24 17:32",
+    body: [
+      "With new friends and a trideo recorded it is time we leave for LA and set sails (set engines?) for Seattle.",
+      "I think La Generala, might have blown up a building or something while we were there too. She seemed very adamant about us leaving in a hurry.",
+      "I am looking forward to see my fiends there again. It has been over six months since I met Jim, Anghel or Athena and hope I will see them again while I am there.",
+    ]
+  }, 
+  {
+    timestamp: "2064-10-28 21:11",
+    body: [
+      "We have finally arrived in Seattle. Now to find the toughest runner bar in the city!",
+      "I got a strange message from someone who called themselves King basically at the same moment that I got off the ship. I wonder what that is about."
+    ]
   }
 ];
