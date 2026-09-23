@@ -293,7 +293,7 @@ export const LOG_ENTERIES: LogEntry[] = [
     timestamp: "2064-10-04 17:28",
     body: [
       "Spent some time in LA looking for the Hollywood-Frisian Vikings.",
-      "Met George Spielburg, a producer who offered me a small role in as the viking chieftan in his upcoming move.", 
+      "Met George Spielburg, a producer who offered me a small role in as the viking chieftan in his upcoming trid.", 
       "I think that will be the perfect cover to infiltrate Pathfinder Studios and find out what happened to the vikings.",
     ]
   },  
