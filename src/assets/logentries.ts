@@ -332,7 +332,7 @@ export const LOG_ENTERIES: LogEntry[] = [
     body: [
       "With new friends and a trideo recorded it is time we leave for LA and set sails (set engines?) for Seattle.",
       "I think La Generala, might have blown up a building or something while we were there too. She seemed very adamant about us leaving in a hurry.",
-      "I am looking forward to see my fiends there again. It has been over six months since I met Jim, Anghel or Athena and hope I will see them again while I am there.",
+      "I am looking forward to see my fiends there again. It has been over six months since I met Jim, Anghel or Athena and I hope I will see them again while I am there.",
     ]
   }, 
   {
