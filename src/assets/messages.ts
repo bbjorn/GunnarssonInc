@@ -53,7 +53,7 @@ export const CURRENT_MESSAGES: TMessage[] = [
       "<em>Vänd om, åk hem. Att du är här kommer bara skapa en större katastrof för de vars liv du inkräktar på.</em>",
       "<em>Vill du bli en runner? Lär dig att se bortom din egen vilja.</em>"
     ],
-    timestamp: "2026-10-28 23:21"
+    timestamp: "2026-10-28 18:21"
   }
 ];
 
