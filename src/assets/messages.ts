@@ -7,7 +7,55 @@ export type TMessage = {
   inReplyTo?: TMessage;
 };
 
-export const CURRENT_MESSAGES: TMessage[] = [];
+export const CURRENT_MESSAGES: TMessage[] = [
+  {
+    id: 401,
+    title: "Tuffast på Trinity",
+    sender: "Blixten",
+    body: [
+      "TRINITY RUNNERS, är ni trötta på att vissa runners äter upp all rep???",
+      "Att fixers ger prio och de bra jobben till snubbar som har varit med i spelet för länge och verkligen borde lägga av sig sina vapen vid det här laget?",
+      "Känner DU att du inte fått en bra chans att visa vad du går för? Då är din tid INNE! Ikväll så utlyser jag en belöning på TIO TUSEN NUYEN på den som först",
+      "1) Spöar DREKKET ur NUVARANDE Tuffast på Trinity: runnern Severus Kael. ",
+      "2) Efteråt utlyser sig som TUFFAST på Trinity till Baren.",
+      "3) Håller sin titel utan att förlora till midnatt.",
+      "Vinnaren kommer få belöningen OCH en exklusiv möjlighet att få ett meet med mig, Bernard Blixten i Downtown, för en once-in-a-lifetime affärsmöjlighet.",
+      "Reglerna är enkla! Spöar du TUFFAST PÅ TRINITY? Säg till i Baren.",
+      "Blir du spöad? Ta tillbaks den!",
+      "Den som håller titeln vinner! MÅ BÄSTE RUNNER VINNA!",
+    ],
+    timestamp: "2064-11-02 13:44",
+  },
+  {
+    id: 402,
+    title: "Your package has been delivered",
+    sender: "Notifications@FedEx-Seattle-Host",
+    body:  [
+      "Good afternoon, Ralf Gunnarsson.",
+      "Your package, an IKEA-FAB Stormgud (Item No. 204-551.17), was delivered today, [DELIVERY_DATE], at [DELIVERY_TIME].",
+      "Delivered to: [RECIPIENT_OR_LOCATION].",
+      "Signed for by: [SIGNATURE].",
+      "-------",
+      "If you have not received your package, please check around your residence, with your neighbors, or other persons at or near [DELIVERY_LOCATION].",
+      "FedEx considers this delivery complete.",
+      "For questions, contact [Host: FedEx-Support-Main].",
+      "Thank you for choosing FedEx.",
+    ],
+    timestamp: "2064-11-02 16:59",
+  },
+  {
+    id: 403,
+    title: "Det spelar ingen roll...",
+    sender: "<red>KING</red>",
+    body: [
+      "<em>Det spelar ingen roll hur mycket du försöker.</em>",
+      "<em>Du är ingen Runner, bara en dåre i elfenbens<red>tornet</red>.</em>",
+      "<em>Vänd om, åk hem. Att du är här kommer bara skapa en större katastrof för de vars liv du inkräktar på.</em>",
+      "<em>Vill du bli en runner? Lär dig att se bortom din egen vilja.</em>"
+    ],
+    timestamp: "2026-10-28 23:21"
+  }
+];
 
 export const SPAM_MESSAGES: TMessage[] = [
   {
@@ -15,7 +63,7 @@ export const SPAM_MESSAGES: TMessage[] = [
     title: "Du har vunnit 1.000 ¥ på ValhallaLotto!",
     sender: "LottoOden@ValhallaLotto",
     body: [
-      "Leif \"Tåget\" Odinsson här,",
+      'Leif "Tåget" Odinsson här,',
       "Ralf, ditt SIN-nummer har blivit draget av LottoBalder och du är en vinnare!",
       "Du har vunnit 1.000 ¥ på ValhallaLotto!",
       "Hämta din vinst via: [Grid Node: ValhallaLotto#RALF888]",
@@ -25,7 +73,7 @@ export const SPAM_MESSAGES: TMessage[] = [
   },
   {
     id: 302,
-    title: "⚡ EXKLUSIVT: Berserker-Chip Oppgradering ⚡",
+    title: "🗲 EXKLUSIVT: Berserker-Chip Oppgradering 🗲",
     sender: "TechSeidr@NordicNet-Nexus",
     body: [
       "Krigere, cyber-chippet ditt er for gammalt for Ragnarök!",
@@ -37,7 +85,7 @@ export const SPAM_MESSAGES: TMessage[] = [
   },
   {
     id: 303,
-    title: "🔥 Valkyrja Dating Service für dich! 🔥",
+    title: "Valkyrja Dating Service für dich!",
     sender: "Schildmaid@Valhalla-Love-Host",
     body: [
       "153 Valkyrjer in deiner Nähe warten auf dich!",
@@ -52,7 +100,7 @@ export const SPAM_MESSAGES: TMessage[] = [
     title: "IMPORTANT: Your package has been blocked in Aztlan!",
     sender: "KegariDelivery@Tirna-Host",
     body: [
-      "Your package of Ares Monofilament Axe (ID: KG-459X) is stuck in Aztlan customs.",
+      "Your package of IKEA-FAB Stormgud (ID: KG-459X) is stuck in Aztlan customs.",
       "Pay 300 ¥ to release it: [Credstick: Tirna-Payment#KG-459X]",
       "Or Lone Star will take it!",
     ],
@@ -60,7 +108,7 @@ export const SPAM_MESSAGES: TMessage[] = [
   },
   {
     id: 305,
-    title: "⚠️ YOUR SIN-NUMBER IS COMPROMISED! ⚠️",
+    title: "🕱 YOUR SIN-NUMBER IS COMPROMISED! 🕱",
     sender: "SecurityAlert@L0neStár-Host",
     body: [
       "Your SIN has been detected in illegal database!",

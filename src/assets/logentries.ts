@@ -289,5 +289,45 @@ export const LOG_ENTERIES: LogEntry[] = [
       "But La Generala tells me we made some great progress in liberating the southern and western states, so hopefully that is about to change.",
       "Tomorrow we will reach Los Angeles. All of my favourite trideos are made there and I really want to see if I can find those Frisian Vikings."
     ]
+  }, {
+    timestamp: "2064-10-04 17:28",
+    body: [
+      "Spent some time in LA looking for the Hollywood-Frisian Vikings.",
+      "Met George Spielburg, a producer who offered me a small role in as the viking chieftan in his upcoming move.", 
+      "I think that will be the perfect cover to infiltrate Pathfinder Studios and find out what happened to the vikings.",
+    ]
+  },  
+  {
+    timestamp: "2064-10-06 09:52",
+    body: [
+      "First day on the set at Pathfinder Studios. The dresser has my name on it \"Hralf Bloodaxe\". I convinced the scriptwriter, Jaime Camáron, that Hralf is the best name for a viking so he agreed to change my character's name.",
+      "Spent four hours in makeup while a very serious woman braided my beard and explained that \"historical accuracy is not the vibe (director) Fjord is going for.\""
+    ]
+  },
+  {
+    timestamp: "2064-10-12 22:47",
+    body: [
+      "The script keeps changing. Today's revision has my character fighting a cybernetic sea serpent on the roof of a moving longship. On a highway.",
+      "One of the extras, a tall chummer with long blond hair, kept bugging Mike Fjord about how the how the longship got on the highway and he said \"the audience won't care.\" I don't care either, it was awesome!",
+      "The chummer muttered something in something that reminded me a bit of Danish under his breath. I pretended not to hear it. This might be one of the lost vikings I am looking for!",
+    ]
+  },
+  {
+    timestamp: "2064-10-18 20:03",
+    body: [
+      "Confirmed it. Several of the Frisian Vikings are working as extras on the production. Turns out that when a horde of Vikings disappears from the North Sea, some of them wash up in Hollywood playing Vikings.",
+      "Arranged to meet a few of them after the shoot tomorrow. Finally, some progress."
+    ]
+  },
+  {
+    timestamp: "2064-10-23 15:32",
+    body: [
+      "Been busy lately shooting for \"The Viking Age II - Ragnarök on Wheels\". Director Fjord is very particular about getting the explosives just right.",
+      "Yesterday's scene where I was jumping over burning longhouse on Suzuki Aurora (obvious product placement) while fighting laser raports was particular difficult to get right.",
+      "Had dinner with the Frisian Vikings between shoots. Turns out they played roles in the first \"The Viking Age\" trideo, and we made fast friends. It's good to hear a familiar accent, even this far from the North Sea.",
+      "I will see them again the next time I am in LA.", 
+    ]
+  }, {
+    timestamp: "2064-10"
   }
 ];

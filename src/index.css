@@ -91,6 +91,10 @@ h6 {
   font-weight: 400;
 }
 
+.red{
+  color: red;
+}
+
 .terminal {
   background-size: 1px 100dvh;
   background-position: bottom;

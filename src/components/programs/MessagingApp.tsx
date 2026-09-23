@@ -133,17 +133,17 @@ const Message = ({ msg }: { msg: TMessage }) => {
   return (
     <>
       <div className="msg-title">{msg.title}</div>
-      <div className="msg-sender">From: {msg.sender}</div>
+      <div className="msg-sender">From: {printMsg(msg.sender)}</div>
       <div className="msg-timestamp">{msg.timestamp}</div>
       <br />
       {Array.isArray(msg.body) ? (
         msg.body.map((part, i) => (
           <p key={i} className="msg-body">
-            {part}
+            {printMsg(part)}
           </p>
         ))
       ) : (
-        <p className="msg-body">{msg.body}</p>
+        <p className="msg-body">{printMsg(msg.body)}</p>
       )}
 
       {msg.inReplyTo ? (
@@ -167,3 +167,19 @@ const msgLength = (msg: TMessage) =>
   typeof msg.body === "string"
     ? msg.body.length
     : msg.body.reduce((acc, cur) => acc + cur.length, 0);
+
+
+
+const EmWrapper = ({children}:{children: React.ReactNode}) => <em>{children}</em>
+const RedWrapper = ({children}:{children: React.ReactNode}) => <span className="red">{children}</span>
+    
+const printMsg:(msg: string) => React.ReactNode = (msg) => {
+  if(msg.includes("<em>")) return cutTag(msg, "em", EmWrapper)
+  if(msg.includes("<red>")) return cutTag(msg, "red", RedWrapper)
+  return <>{msg}</>;
+}
+
+type TWrapperComponent = React.ComponentType<{ children: React.ReactNode }>;
+const cutTag: (msg: string, tag: string, Wrapper: TWrapperComponent) =>  React.ReactNode = (msg, tag, Wrapper) => {
+  return <>{printMsg(msg.slice(0, msg.indexOf(`<${tag}>`)))}<Wrapper>{printMsg(msg.slice(msg.indexOf(`<${tag}>`) + `<${tag}>`.length, msg.lastIndexOf(`</${tag}>`)))}</Wrapper>{printMsg(msg.slice(msg.lastIndexOf(`</${tag}>`) + `</${tag}>`.length))}</>
+}
