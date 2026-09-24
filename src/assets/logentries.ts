@@ -4,22 +4,24 @@ export interface LogEntry {
   timestamp: string;
 }
 
-export const LOG_ENTERIES: LogEntry[] = [
+export const LOG_ENTRIES: LogEntry[] = [
   {
  
     timestamp: "2064-04-15 17:46",
     body: [
-      "Left the port of Gothenburg at 14:00.",
-      "The ship is currently off the coast of Denmark, heading towards Hamburg.",
-      "Weather conditions are smooth, and adventure is in the air.",
+     "I was a̶͍̟̕p̾͟rͨ̇ọả̴̡̦ć͖h̼̩͋̈́̍͞e̟͔̥̠̫̝͉̙͍̩̾̀̆̈́̄̾͜͝d̞̺͏̤ͭ i͔̭̹̊ͫ͗̐̕͜͏̭̑ṉ̴̻ͯ̓̇̋ͪ̒͜ t̻̩͉̩͓̼̞̉̆͋̓̏̃ͣ̄ͣ͡ͅh̳̫͐̃ͪ̎͜͝e͔̺̐̌̂̊̋ h͝҉̭̪̌̅a̬̺̞̬̼͉̣͔b̷̸̨̯͓̜͔̥̮͇̻͓̔̽̿͝o̷̜̮͂͒̒̏u̜̭̣̫̠͎̜͉̐ͣ̋̉ȓ̠̬ͨ̾  [̶͎͇ͣ̀͏̨ͫͧ͟͢m̨̛̙̭̼̭͔̂ͦ͋͂̀͜͢͡͝e̡͍̗̖̺͓̙̩ͥ̍ͤ͛ͪ͟͞s̷̝̣̬̏ͦ̍҉s̵̶̟̞̦͎̳̦͚̔͊ͮ̅͟ậ̷̛͝ģ̴̷̵̥̭̙͉͙ͭ̀ͬͯͪͥ̃̀ȩ̵͉̱̣̩̰ͣͤ͘͡҉̦͖̹́ͨ̍̓͊҉̬ c̛̛̝̞̤̹̝͇͛̊ͩ̔́̕͟͡o̷̡̤̣͚̰ͬ́҉̸̛ͪ̀ͧͅr̻̥ͫ̕ŗ̢̛̯͚͈̬̹̝ͨ̔͗̏͟͏̛̺̣͛ͤ̇u̷̡̖̻̺̟͓̝̠̱͙͐͊ͫ̍͂ͦ͘͜͡͠p͝͏̸̯͖̖̭̩ͥ̀̎ͩ̍̈̕͟t̵̶͟҉̷̴̴̵̩̓̂ͫ͛͑͘͟͞ẻ̷̡̟̹͎̫̒͛͑ͬ͏̥̼̙̅̒͘͜d͔̲ͮ͊ͬ͌̀̓͜͟͡]̛̛̼̘̭ͫͩͭ͜͜͠͏͝",
+ "Left the port of Gothenburg at 14:00.",
+ "The ship is currently off the coast of Denmark, heading towards Hamburg.",
+  "Weather conditions are smooth, and adventure is in the air.",
     ],
   },
   {
     timestamp: "2064-04-16 09:30",
     body: [
-      "Arrived in Hamburg at 08:45.",
-      "Ship is now undergoing maintenance and refueling.",
-      "Crew has been told to go raid the local beer halls and enjoy the city.",
+   "Arrived in Hamburg at 08:45.",
+"Dropp̡̭̝̾̂e̶̟̟͒ͧ͐͘ḓ̣͙͡ o̶̙̽͜͜͞f̸̯̝̹͌̎̐͜f  t̙h̭͙ͯ͏̢̫͉͈͎̭͛̐͟e̺̊͐҉͟҉ ru[͕͉ͯͬmͭe̝̫͍͎̣̟̙͐ͨͭͫ͘͜͡s̎̇s̴̱̤̱͍͔̺̒̈ͭ̍͗̓a̩͑͒̊̎͢ģ̶̸̬̫͈̺̺̱̿̎͗̆ͫͨ͢ē c̛̠̻̲̩̱͎̳͉̈ͨ̉̈̆ͩ̓ͦ͑ȏ̵̪͕̘̮͕̬̾̈́͟͡r͔̊r̼̯̆̅ͩ̄u̜̮̰̝̯̒ͦ͗̂̕p̪̗̥̤̈́̂t̨͈̍͜ë͔͕̻͉̦̟̯͕͕̼̼͓͈ͬͫ̇̉d͎̻͕̣̱̓͂̃̕]̷̧̛̦͔̱̹̩́ͤͤͪ̌̔͝.", 
+ "Ship is now undergoing maintenance and refueling.",
+"Crew has been told to go raid the local beer halls and enjoy the city.",
     ],
   },
   {
@@ -76,7 +78,7 @@ export const LOG_ENTERIES: LogEntry[] = [
   }, {
     timestamp: "2064-05-03 17:23",
     body: [
-     "Sailed passed some French towns, but did not stop.",
+     "Sailed past some French towns, but did not stop.",
      "Spirits are high, but so far we feel more like tourists than viking shadowrunners.",
      "Landing in Rennes Brittany tomorrow.",
      "I have made contact with a fixer there through the Shadowland BBS.",
@@ -122,14 +124,14 @@ export const LOG_ENTERIES: LogEntry[] = [
       "Met with this old chummer named Colm, who just can't stop talking.",
       "His mouth moves on and on, but it is impossible to focus while he's talking.",
       "I am sure he is a nice guy, but I am not sure if I can take much more of his rambling.",
-      "We going to make a break for it tomorrow",
+      "We're going to make a break for it tomorrow",
     ]
   },
   {
     timestamp: "2064-05-18 11:05",
     body: [
-      "We failed to escape from Colm, as he somehow managed to got on board the ship as we were leaving.",
-      "I had to run the ship fully on the the autopilot, while Colm was running around the ship, trying to get us to stop and listen to him.",
+      "We failed to escape from Colm, as he somehow managed to get on board the ship as we were leaving.",
+      "I had to run the ship fully on the autopilot, while Colm was running around the ship, trying to get us to stop and listen to him.",
       "Looking to dock at the nearest port, so we can get rid of him.",
     ]
   }, {
@@ -152,7 +154,7 @@ export const LOG_ENTERIES: LogEntry[] = [
   }, {
     timestamp: "2064-05-25 12:15",
     body: [
-      "We have arrived the Faeroe Islands, and we are currently docked at the port of Torshavn.",
+      "We have arrived in the Faeroe Islands, and we are currently docked at the port of Torshavn.",
       "The weather is cold and windy, but the scenery is beautiful.",
       "We are planning to stay here for a few days, and then we will continue our journey towards Iceland.",
     ]
@@ -179,21 +181,21 @@ export const LOG_ENTERIES: LogEntry[] = [
       "Visited a few hot springs, the country is beautiful once you get away from Reykjavik, and the people are friendly and welcoming.",
       "We helped with banishing an evil spirit from a local vulcano, and we were rewarded with hákarl and brennivín.",
       "Been eaten a lot of soychoclate bars with licorice, which seems to be 95% of the Icelandic candy",
-      "Tomorrow we set out towards Thule, I hope to build a igloo while I am there.",
+      "Tomorrow we set out towards Thule, I hope to build an igloo while I am there.",
     ]
   }, {
     timestamp: "2064-06-07 11:15",
     body: [
       "We have arrived in Thule, and we are currently docked at the port of Nuuk.",
       "Turns out it is not as cold as I expected so no snow and no igloo for me.",
-      "Maybe we can build some kind of cottage or hut instead? But despite the old name it is not very green and lacks trees.",
+      "Maybe we can build some kind of cottage or hut instead? But despite the old name, this place is not very green and lacks trees.",
       "We are going to stay here for a few days before we start heading south towards UCAS.",
     ]
   }, {
     timestamp: "2064-06-10 14:18",
     body: [
       "We decided to throw a party invited the locals to celebrate summer with hákarl and brennivín from Iceland.",
-      "It is aquired taste. A third of the crew is now sick, but the rest of us had a great time.",
+      "It is acquired taste. A third of the crew is now sick, but the rest of us had a great time.",
       "Two of the chummers from Tórshavn decided to stay here. But we picked up a few new ones at the party, so it all balanced out in the end.",
       "We shall set sail for UCAS tomorrow, looking forward to see Newfoundland, which I believe the vikings of old called Vinland.",
     ]
@@ -201,7 +203,7 @@ export const LOG_ENTERIES: LogEntry[] = [
     timestamp: "2064-06-14 09:03",
     body: [ 
       "Following in the footsteps of the great viking explorer, Leif Erikson, we have arrived in Newfoundland, and we are currently anchoring in the Médée Bay.",
-      "This is our final stop in the lands of the vikings. The settlement here is quite rustic and some good saunas. ", 
+      "This is our final stop in the lands of the vikings. The settlement here is quite rustic, and there are some good saunas.", 
       "Yesterday we went fishing for giant sea serpents, but it got away. We are going to try again tomorrow, and hopefully we will have better luck.",
       "Hopefully we'll be able to shoot it tomorrow. It is a beautiful creature, and I would really like to have a picture of it to show when I return home.",
     ], 
@@ -225,24 +227,24 @@ export const LOG_ENTERIES: LogEntry[] = [
   }, {
     timestamp: "2064-07-04 18:31",
     body: [
-      "Apparently we were achored just a few hours west of Havana, to which we have now sailed.",
-      'Hazmat has decided to part way with us here as he is hitch a ride towards Kingston, where they have "the best smoke".',
-      "This apparently angred some of locals that overheard us, they claimed cuban cigars are the best. So we got into a fist fight.",
-      "Hopefully we'll see Hazmat again on our journey - I going to miss the chummer.",
+      "Apparently we were anchored just a few hours west of Havana, to which we have now sailed.",
+      'Hazmat has decided to part ways with us here as he is hitch a ride towards Kingston, where they have "the best smoke".',
+      "This apparently angered some of the locals that overheard us, they claimed cuban cigars are the best. So we got into a fist fight.",
+      "Hopefully we'll see Hazmat again on our journey - I'm going to miss the chummer..",
     ]
   }, {
     timestamp: "2064-07-08 16:52",
     body: [
       'Met old salty sailor chummer who was looking for a crew to go help him find "The Lost Treasure of Captain Carlos el Borracho".', 
-      "Spent a couple sailing looking for ship wrecks, most of them were a lot more recent that I expected.",
+      "Spent a couple days sailing looking for shipwrecks, most of them were a lot more recent that I expected.",
       "In the end we found a cargo ship that couldn't have sunk more than a couple of weeks ago.",
-      "The old salt got all extatic and we dove down and picked up an sealed container for him.",
+      "The old salt got all ecstatic and we dove down and picked up an sealed container for him.",
       "We dropped off the old sailor and his box at Havana, now we are sailing towards Aztlan."
     ]
   }, {
     timestamp: "2064-07-15 17:22",
     body: [
-      "We have been docked in Progresso, Yucatán, for about a weeks now.", 
+      "We have been docked in Progresso, Yucatán, for about a week now.", 
       "Apparently this is where the comet that killed the dinosaurs crashed into the earth.", 
       "We made friends with a local who goes by the name of \"la Generala.\" She's been showing us around, and from what she says, this place has a lot of history.",
       "From what I can tell, the locals are all pretty angry about that peace treaty. La Generala says they're sure Aztlan is just licking their wounds and will attack again at any moment.",
@@ -255,7 +257,7 @@ export const LOG_ENTERIES: LogEntry[] = [
       "We are now leaving Yucatán and are sailing east.", 
       "La Generala has decided to join us, as she is convinced that she can spread her Zapatista ideas to rest of Aztlan.",
       "It's hard to disagree after everything she showed us, and our route will take us through most of the coast of the country.",
-      "But before that we do that, we will take a short detour as we hope to catch up with Hazmat on Jamaica",
+      "But before we do that, we will take a short detour as we hope to catch up with Hazmat on Jamaica",
     ]
   }, {
     timestamp: "2064-07-23 09:02",
@@ -285,7 +287,7 @@ export const LOG_ENTERIES: LogEntry[] = [
   }, {
     timestamp: "2064-09-29 12:32",
     body: [
-      "I can finally write again! I loved Aztlan, the food, the people, the music... though not so much the opressive goverment and getting shot at by Eagle Warriors.",
+      "I can finally write again! I loved Aztlan, the food, the people, the music... though not so much the oppressive government and getting shot at by Eagle Warriors.",
       "But La Generala tells me we made some great progress in liberating the southern and western states, so hopefully that is about to change.",
       "Tomorrow we will reach Los Angeles. All of my favourite trideos are made there and I really want to see if I can find those Frisian Vikings."
     ]
@@ -308,7 +310,7 @@ export const LOG_ENTERIES: LogEntry[] = [
     timestamp: "2064-10-12 22:47",
     body: [
       "The script keeps changing. Today's revision has my character fighting a cybernetic sea serpent on the roof of a moving longship. On a highway.",
-      "One of the extras, a tall chummer with long blond hair, kept bugging Mike Fjord about how the how the longship got on the highway and he said \"the audience won't care.\" I don't care either, it was awesome!",
+      "One of the extras, a tall chummer with long blond hair, kept bugging Mike Fjord about how the longship got on the highway and he said \"the audience won't care.\" I don't care either, it was awesome!",
       "The chummer muttered something in something that reminded me a bit of Danish under his breath. I pretended not to hear it. This might be one of the lost vikings I am looking for!",
     ]
   },
@@ -330,16 +332,17 @@ export const LOG_ENTERIES: LogEntry[] = [
   }, {
     timestamp: "2064-10-24 17:32",
     body: [
-      "With new friends and a trideo recorded it is time we leave for LA and set sails (set engines?) for Seattle.",
-      "I think La Generala, might have blown up a building or something while we were there too. She seemed very adamant about us leaving in a hurry.",
-      "I am looking forward to see my fiends there again. It has been over six months since I met Jim, Anghel or Athena and I hope I will see them again while I am there.",
+      "That's a wrap, as they say in the business. With new friends and a trideo recorded, it is time we leave LA and set sail again (do you say set sail for motor boat?).",
+      "La Generala seems very keen to be gone, and I wouldn't be surprised if she has blown up a building or something.",
+      "It's been more than six months since I saw Jim, Anghel, and Athena, and I'm hoping to catch up with them in Seattle.",
     ]
   }, 
   {
     timestamp: "2064-10-28 21:11",
     body: [
-      "We have finally arrived in Seattle. Now to find the toughest runner bar in the city!",
-      "I got a strange message from someone who called themselves King basically at the same moment that I got off the ship. I wonder what that is about."
+      "We have finally arrived in Seattle. The rain started the moment we entered the harbour. Reminds me of home.",
+      "Now to find the toughest runner bar in the city! I can't wait to meet all the prime runners in this city.",
+      "I got a strange message from somebody calling themselves King at almost the exact moment I stepped off the ship. I wonder what that is about."
     ]
   }
 ];

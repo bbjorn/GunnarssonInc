@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { useLoadingScreen } from "../../hooks/useLoadingScreen";
 import { DRAKKAR_SMALL } from "../AsciiArt";
-import { LOG_ENTERIES, type LogEntry } from "../../assets/logentries";
+import { LOG_ENTRIES, type LogEntry } from "../../assets/logentries";
 
 export const SHIP_NAME = "MLS Järnormen";
 
 const getInLarpDate = () => {
   // Returns the date of the latest message in the logbook in the format YYYY-MM-DD
 
-  const latestMessage = LOG_ENTERIES.reduce((latest, current) => {
+  const latestMessage = LOG_ENTRIES.reduce((latest, current) => {
     return new Date(current.timestamp) > new Date(latest.timestamp)
       ? current
       : latest;
-  }, LOG_ENTERIES[0]);
+  }, LOG_ENTRIES[0]);
 
   return latestMessage.timestamp.split(" ")[0]; // Return only the date part
 };
@@ -22,7 +22,7 @@ export default function Log({ onExit }: { onExit: () => void }) {
   const { loadingScreen, loading, setLoading, hasLoadedOnce } =
     useLoadingScreen();
   const selectedMessage =
-    typeof selectedId === "number" ? LOG_ENTERIES.at(selectedId) : null;
+    typeof selectedId === "number" ? LOG_ENTRIES.at(selectedId) : null;
 
   return (
     <div className="terminal">
@@ -41,7 +41,7 @@ export default function Log({ onExit }: { onExit: () => void }) {
               data-showing-message={selectedId !== null}
             >
               <ol>
-                {LOG_ENTERIES.map((entry, i) => ({ ...entry, id: i })).map(
+                {LOG_ENTRIES.map((entry, i) => ({ ...entry, id: i })).map(
                   (msg) => (
                     <li
                       key={msg.id}
@@ -73,7 +73,7 @@ export default function Log({ onExit }: { onExit: () => void }) {
                   <Message
                     msg={{ ...selectedMessage, id: selectedId ?? 0 }}
                     setSelectedId={setSelectedId}
-                    nbrOfEntries={LOG_ENTERIES.length}
+                    nbrOfEntries={LOG_ENTRIES.length}
                     setLoading={setLoading}
                   />
                   <button
